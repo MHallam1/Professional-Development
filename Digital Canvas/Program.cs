@@ -11,6 +11,9 @@ namespace Digital_Canvas
         static void Main(string[] args)
         {
             Console.WriteLine("Test");
+            Console.WriteLine("meme meme");
+            Console.WriteLine("meme meme");
+            Console.WriteLine("meme 3444444444444444444");
         }
     }
 }
