@@ -14,8 +14,8 @@ namespace Digital_Canvas
     {
         //creating 
         Graphics graphic;
-        int x = -1;
-        int y = -1;
+        int cursorX = -1;
+        int cursorY= -1;
         bool moving = false;
         Pen pencil;
         public Canvas()
@@ -38,27 +38,27 @@ namespace Digital_Canvas
         private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e)
         {
             moving = true;
-            x = e.X; // gets mouse x location
-            y = e.Y; // gets mouse  y location
+            cursorX = e.X; // gets mouse X location
+            cursorY = e.Y; // gets mouse Y location
             splitContainer1.Panel2.Cursor = Cursors.Cross;
         }
 
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (moving && x!=-1 && y != -1)
+            if (moving && cursorX != -1 && cursorY != -1)
             {
-                graphic.DrawLine(pencil, new Point(x, y), e.Location);
-                //update the x and y to draw as intended
-                x = e.X; 
-                y = e.Y;
+                graphic.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
+                //update thecursorXandcursorYto draw as intended
+               cursorX= e.X; 
+               cursorY= e.Y;
             }
         }
 
         private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e)
         {
             moving = false;
-            x = -1;
-            x = -1;
+           cursorX= -1;
+           cursorX= -1;
             splitContainer1.Panel2.Cursor = Cursors.Default;
         }
     }
