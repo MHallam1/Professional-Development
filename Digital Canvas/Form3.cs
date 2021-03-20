@@ -22,7 +22,11 @@ namespace Digital_Canvas
         {
             InitializeComponent();
             graphic = splitContainer1.Panel2.CreateGraphics();
-            pencil = new Pen(Color.Black,5);
+            pencil = new Pen(Color.Black,2);
+            graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+
         }
 
         private void red_Click(object sender, EventArgs e)
@@ -36,7 +40,7 @@ namespace Digital_Canvas
             moving = true;
             x = e.X; // gets mouse x location
             y = e.Y; // gets mouse  y location
-
+            splitContainer1.Panel2.Cursor = Cursors.Cross;
         }
 
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e)
@@ -44,6 +48,8 @@ namespace Digital_Canvas
             if (moving && x!=-1 && y != -1)
             {
                 graphic.DrawLine(pencil, new Point(x, y), e.Location);
+                x = e.X;
+                y = e.Y;
             }
         }
 
@@ -52,6 +58,7 @@ namespace Digital_Canvas
             moving = false;
             x = -1;
             x = -1;
+            splitContainer1.Panel2.Cursor = Cursors.Default;
         }
     }
 }
