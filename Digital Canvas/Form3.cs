@@ -24,7 +24,7 @@ namespace Digital_Canvas
             graphic = splitContainer1.Panel2.CreateGraphics();
             pencil = new Pen(Color.Black,2);
             graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line  rounded
             pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
 
         }
@@ -48,7 +48,8 @@ namespace Digital_Canvas
             if (moving && x!=-1 && y != -1)
             {
                 graphic.DrawLine(pencil, new Point(x, y), e.Location);
-                x = e.X;
+                //update the x and y to draw as intended
+                x = e.X; 
                 y = e.Y;
             }
         }
