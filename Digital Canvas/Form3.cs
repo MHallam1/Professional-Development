@@ -27,6 +27,7 @@ namespace Digital_Canvas
             pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line  rounded
             pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
 
+
         }
 
         private void red_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace Digital_Canvas
             if (moving && cursorX != -1 && cursorY != -1)
             {
                 graphic.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
-                //update thecursorXandcursorYto draw as intended
+                //update the cursorX and cursorY to draw as intended
                cursorX= e.X; 
                cursorY= e.Y;
             }
