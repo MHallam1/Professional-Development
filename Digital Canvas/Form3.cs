@@ -36,7 +36,7 @@ namespace Digital_Canvas
             pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             pencilButton.BackColor = Color.LightGreen;
 
-
+           
         }
 
         private void red_Click(object sender, EventArgs e)
@@ -63,6 +63,7 @@ namespace Digital_Canvas
 
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e)
         {
+            graphic = splitContainer1.Panel2.CreateGraphics();// updates graphic size when window size changes
             if (moving && cursorX != -1 && cursorY != -1)
             {
                 graphic.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
@@ -70,6 +71,7 @@ namespace Digital_Canvas
                cursorX= e.X; 
                cursorY= e.Y;
             }
+
         }
 
         private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e)
@@ -119,6 +121,11 @@ namespace Digital_Canvas
             pencilButton.BackColor = Color.LightGreen;
             eraserButton.BackColor = System.Drawing.Color.Transparent;
             fillButton.BackColor = System.Drawing.Color.Transparent;
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
