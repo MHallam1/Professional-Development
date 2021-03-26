@@ -21,12 +21,15 @@ namespace Digital_Canvas
         Color colour = Color.Black;
         Color colourBkg = Color.White;
         int size = 10;
+        ColorDialog diag = new ColorDialog();
         public Canvas()
         {
             InitializeComponent();
             sizebox.Text = size.ToString();
             size = Int32.Parse(sizebox.Text);
+
             graphic = splitContainer1.Panel2.CreateGraphics();
+
             pencil = new Pen(colour, size);
             graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line  rounded
@@ -39,8 +42,15 @@ namespace Digital_Canvas
         private void red_Click(object sender, EventArgs e)
         {
             PictureBox colours = (PictureBox)sender;
-            pencil.Color = colours.BackColor; // sets the selected colour
-            colour = colours.BackColor;
+           // pencil.Color = colours.BackColor; // sets the selected colour
+           // colour = colours.BackColor;
+
+            using (diag)
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    pencil.Color = diag.Color;
+                    colours.BackColor = diag.Color;
+                }
         }
 
         private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e)
@@ -105,7 +115,7 @@ namespace Digital_Canvas
 
         private void pencilButton_Click_1(object sender, EventArgs e)
         {
-            pencil.Color = colour; // sets the selected colour
+            pencil.Color = diag.Color; // sets the selected colour
             pencilButton.BackColor = Color.LightGreen;
             eraserButton.BackColor = System.Drawing.Color.Transparent;
             fillButton.BackColor = System.Drawing.Color.Transparent;

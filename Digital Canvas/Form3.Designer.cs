@@ -36,8 +36,6 @@ namespace Digital_Canvas
             this.pencilButton = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colourPanel = new System.Windows.Forms.Panel();
-            this.green = new System.Windows.Forms.PictureBox();
-            this.blue = new System.Windows.Forms.PictureBox();
             this.red = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +59,7 @@ namespace Digital_Canvas
             this.canvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sizebox = new System.Windows.Forms.TextBox();
             this.sizeText = new System.Windows.Forms.Label();
+            this.colorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,8 +69,6 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.pencilButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.colourPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -96,8 +93,8 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseDown);
             this.splitContainer1.Panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseMove);
             this.splitContainer1.Panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseUp);
-            this.splitContainer1.Size = new System.Drawing.Size(752, 493);
-            this.splitContainer1.SplitterDistance = 94;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 426);
+            this.splitContainer1.SplitterDistance = 100;
             this.splitContainer1.TabIndex = 0;
             // 
             // fillButton
@@ -146,38 +143,17 @@ namespace Digital_Canvas
             // colourPanel
             // 
             this.colourPanel.BackColor = System.Drawing.Color.Gainsboro;
-            this.colourPanel.Controls.Add(this.green);
-            this.colourPanel.Controls.Add(this.blue);
+            this.colourPanel.Controls.Add(this.colorLabel);
             this.colourPanel.Controls.Add(this.red);
             this.colourPanel.Location = new System.Drawing.Point(602, 0);
             this.colourPanel.Name = "colourPanel";
             this.colourPanel.Size = new System.Drawing.Size(186, 24);
             this.colourPanel.TabIndex = 0;
             // 
-            // green
-            // 
-            this.green.BackColor = System.Drawing.Color.Lime;
-            this.green.Location = new System.Drawing.Point(90, 3);
-            this.green.Name = "green";
-            this.green.Size = new System.Drawing.Size(20, 18);
-            this.green.TabIndex = 3;
-            this.green.TabStop = false;
-            this.green.Click += new System.EventHandler(this.red_Click);
-            // 
-            // blue
-            // 
-            this.blue.BackColor = System.Drawing.Color.Blue;
-            this.blue.Location = new System.Drawing.Point(64, 3);
-            this.blue.Name = "blue";
-            this.blue.Size = new System.Drawing.Size(20, 18);
-            this.blue.TabIndex = 4;
-            this.blue.TabStop = false;
-            this.blue.Click += new System.EventHandler(this.red_Click);
-            // 
             // red
             // 
-            this.red.BackColor = System.Drawing.Color.Red;
-            this.red.Location = new System.Drawing.Point(38, 3);
+            this.red.BackColor = System.Drawing.Color.Black;
+            this.red.Location = new System.Drawing.Point(4, 3);
             this.red.Name = "red";
             this.red.Size = new System.Drawing.Size(20, 18);
             this.red.TabIndex = 5;
@@ -192,7 +168,7 @@ namespace Digital_Canvas
             this.customizeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -350,6 +326,15 @@ namespace Digital_Canvas
             this.sizeText.TabIndex = 3;
             this.sizeText.Text = "Brush Size: ";
             // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(30, 6);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(115, 13);
+            this.colorLabel.TabIndex = 6;
+            this.colorLabel.Text = "Click to Change Colour";
+            // 
             // Canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,8 +357,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.pencilButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.colourPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blue)).EndInit();
+            this.colourPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.red)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -387,8 +371,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel colourPanel;
-        private System.Windows.Forms.PictureBox green;
-        private System.Windows.Forms.PictureBox blue;
         private System.Windows.Forms.PictureBox red;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
@@ -415,5 +397,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.TextBox sizebox;
         private System.Windows.Forms.PictureBox fillButton;
         private System.Windows.Forms.Label sizeText;
+        private System.Windows.Forms.Label colorLabel;
     }
 }
