@@ -31,12 +31,19 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fillButton = new System.Windows.Forms.PictureBox();
-            this.eraserButton = new System.Windows.Forms.PictureBox();
-            this.pencilButton = new System.Windows.Forms.PictureBox();
+            this.lblCanvasSize = new System.Windows.Forms.Label();
+            this.lblWidth = new System.Windows.Forms.Label();
+            this.lblHeight = new System.Windows.Forms.Label();
+            this.txtHeight = new System.Windows.Forms.TextBox();
+            this.txtWidth = new System.Windows.Forms.TextBox();
+            this.btnChangeSize = new System.Windows.Forms.Button();
+            this.btnFill = new System.Windows.Forms.PictureBox();
+            this.btnEraser = new System.Windows.Forms.PictureBox();
+            this.btnPencil = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colourPanel = new System.Windows.Forms.Panel();
-            this.red = new System.Windows.Forms.PictureBox();
+            this.lblColour = new System.Windows.Forms.Label();
+            this.colourSelect = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,27 +64,24 @@ namespace Digital_Canvas
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keyboardShortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.canvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sizebox = new System.Windows.Forms.TextBox();
-            this.sizeText = new System.Windows.Forms.Label();
-            this.colorLabel = new System.Windows.Forms.Label();
+            this.resizeCanvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSizebox = new System.Windows.Forms.TextBox();
+            this.lblBrushSize = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fillButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eraserButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pencilButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPencil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.colourPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
@@ -86,55 +90,115 @@ namespace Digital_Canvas
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fillButton);
-            this.splitContainer1.Panel1.Controls.Add(this.eraserButton);
-            this.splitContainer1.Panel1.Controls.Add(this.pencilButton);
+            this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
+            this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
+            this.splitContainer1.Panel1.Controls.Add(this.lblHeight);
+            this.splitContainer1.Panel1.Controls.Add(this.txtHeight);
+            this.splitContainer1.Panel1.Controls.Add(this.txtWidth);
+            this.splitContainer1.Panel1.Controls.Add(this.btnChangeSize);
+            this.splitContainer1.Panel1.Controls.Add(this.btnFill);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEraser);
+            this.splitContainer1.Panel1.Controls.Add(this.btnPencil);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseDown);
             this.splitContainer1.Panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseMove);
             this.splitContainer1.Panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseUp);
-            this.splitContainer1.Size = new System.Drawing.Size(804, 500);
-            this.splitContainer1.SplitterDistance = 100;
+            this.splitContainer1.Size = new System.Drawing.Size(787, 538);
+            this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
             // 
-            // fillButton
+            // lblCanvasSize
             // 
-            this.fillButton.Image = global::Digital_Canvas.Properties.Resources.fill;
-            this.fillButton.Location = new System.Drawing.Point(3, 115);
-            this.fillButton.Name = "fillButton";
-            this.fillButton.Size = new System.Drawing.Size(56, 50);
-            this.fillButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.fillButton.TabIndex = 3;
-            this.fillButton.TabStop = false;
-            this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
+            this.lblCanvasSize.AutoSize = true;
+            this.lblCanvasSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCanvasSize.Location = new System.Drawing.Point(12, 407);
+            this.lblCanvasSize.Name = "lblCanvasSize";
+            this.lblCanvasSize.Size = new System.Drawing.Size(77, 15);
+            this.lblCanvasSize.TabIndex = 9;
+            this.lblCanvasSize.Text = " Canvas Size";
             // 
-            // eraserButton
+            // lblWidth
             // 
-            this.eraserButton.Image = global::Digital_Canvas.Properties.Resources.eraser;
-            this.eraserButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("eraserButton.InitialImage")));
-            this.eraserButton.Location = new System.Drawing.Point(3, 59);
-            this.eraserButton.Name = "eraserButton";
-            this.eraserButton.Size = new System.Drawing.Size(56, 50);
-            this.eraserButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.eraserButton.TabIndex = 4;
-            this.eraserButton.TabStop = false;
-            this.eraserButton.Click += new System.EventHandler(this.eraserButton_Click_1);
+            this.lblWidth.AutoSize = true;
+            this.lblWidth.Location = new System.Drawing.Point(11, 469);
+            this.lblWidth.Name = "lblWidth";
+            this.lblWidth.Size = new System.Drawing.Size(35, 13);
+            this.lblWidth.TabIndex = 8;
+            this.lblWidth.Text = "Width";
             // 
-            // pencilButton
+            // lblHeight
             // 
-            this.pencilButton.Image = global::Digital_Canvas.Properties.Resources.pencil;
-            this.pencilButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("pencilButton.InitialImage")));
-            this.pencilButton.Location = new System.Drawing.Point(3, 3);
-            this.pencilButton.Name = "pencilButton";
-            this.pencilButton.Size = new System.Drawing.Size(56, 50);
-            this.pencilButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pencilButton.TabIndex = 3;
-            this.pencilButton.TabStop = false;
-            this.pencilButton.Click += new System.EventHandler(this.pencilButton_Click_1);
+            this.lblHeight.AutoSize = true;
+            this.lblHeight.Location = new System.Drawing.Point(11, 443);
+            this.lblHeight.Name = "lblHeight";
+            this.lblHeight.Size = new System.Drawing.Size(38, 13);
+            this.lblHeight.TabIndex = 7;
+            this.lblHeight.Text = "Height";
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.Location = new System.Drawing.Point(61, 436);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(30, 20);
+            this.txtHeight.TabIndex = 6;
+            // 
+            // txtWidth
+            // 
+            this.txtWidth.Location = new System.Drawing.Point(61, 462);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Size = new System.Drawing.Size(30, 20);
+            this.txtWidth.TabIndex = 5;
+            // 
+            // btnChangeSize
+            // 
+            this.btnChangeSize.Location = new System.Drawing.Point(14, 485);
+            this.btnChangeSize.Name = "btnChangeSize";
+            this.btnChangeSize.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeSize.TabIndex = 4;
+            this.btnChangeSize.Text = "Change Size";
+            this.btnChangeSize.UseVisualStyleBackColor = true;
+            this.btnChangeSize.Click += new System.EventHandler(this.btnChangeSize_Click);
+            // 
+            // btnFill
+            // 
+            this.btnFill.Image = global::Digital_Canvas.Properties.Resources.fill;
+            this.btnFill.Location = new System.Drawing.Point(3, 115);
+            this.btnFill.Name = "btnFill";
+            this.btnFill.Size = new System.Drawing.Size(56, 50);
+            this.btnFill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnFill.TabIndex = 3;
+            this.btnFill.TabStop = false;
+            this.btnFill.Click += new System.EventHandler(this.fillButton_Click);
+            // 
+            // btnEraser
+            // 
+            this.btnEraser.Image = global::Digital_Canvas.Properties.Resources.eraser;
+            this.btnEraser.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEraser.InitialImage")));
+            this.btnEraser.Location = new System.Drawing.Point(3, 59);
+            this.btnEraser.Name = "btnEraser";
+            this.btnEraser.Size = new System.Drawing.Size(56, 50);
+            this.btnEraser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEraser.TabIndex = 4;
+            this.btnEraser.TabStop = false;
+            this.btnEraser.Click += new System.EventHandler(this.eraserButton_Click_1);
+            // 
+            // btnPencil
+            // 
+            this.btnPencil.Image = global::Digital_Canvas.Properties.Resources.pencil;
+            this.btnPencil.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPencil.InitialImage")));
+            this.btnPencil.Location = new System.Drawing.Point(3, 3);
+            this.btnPencil.Name = "btnPencil";
+            this.btnPencil.Size = new System.Drawing.Size(56, 50);
+            this.btnPencil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnPencil.TabIndex = 3;
+            this.btnPencil.TabStop = false;
+            this.btnPencil.Click += new System.EventHandler(this.pencilButton_Click_1);
             // 
             // pictureBox1
             // 
@@ -147,22 +211,31 @@ namespace Digital_Canvas
             // colourPanel
             // 
             this.colourPanel.BackColor = System.Drawing.Color.Gainsboro;
-            this.colourPanel.Controls.Add(this.colorLabel);
-            this.colourPanel.Controls.Add(this.red);
-            this.colourPanel.Location = new System.Drawing.Point(602, 0);
+            this.colourPanel.Controls.Add(this.lblColour);
+            this.colourPanel.Controls.Add(this.colourSelect);
+            this.colourPanel.Location = new System.Drawing.Point(390, 0);
             this.colourPanel.Name = "colourPanel";
             this.colourPanel.Size = new System.Drawing.Size(186, 24);
             this.colourPanel.TabIndex = 0;
             // 
-            // red
+            // lblColour
             // 
-            this.red.BackColor = System.Drawing.Color.Black;
-            this.red.Location = new System.Drawing.Point(4, 3);
-            this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(20, 18);
-            this.red.TabIndex = 5;
-            this.red.TabStop = false;
-            this.red.Click += new System.EventHandler(this.red_Click);
+            this.lblColour.AutoSize = true;
+            this.lblColour.Location = new System.Drawing.Point(30, 6);
+            this.lblColour.Name = "lblColour";
+            this.lblColour.Size = new System.Drawing.Size(115, 13);
+            this.lblColour.TabIndex = 6;
+            this.lblColour.Text = "Click to Change Colour";
+            // 
+            // colourSelect
+            // 
+            this.colourSelect.BackColor = System.Drawing.Color.Black;
+            this.colourSelect.Location = new System.Drawing.Point(4, 3);
+            this.colourSelect.Name = "colourSelect";
+            this.colourSelect.Size = new System.Drawing.Size(20, 18);
+            this.colourSelect.TabIndex = 5;
+            this.colourSelect.TabStop = false;
+            this.colourSelect.Click += new System.EventHandler(this.red_Click);
             // 
             // menuStrip1
             // 
@@ -172,7 +245,7 @@ namespace Digital_Canvas
             this.customizeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -204,7 +277,7 @@ namespace Digital_Canvas
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -308,62 +381,68 @@ namespace Digital_Canvas
             // 
             // canvasToolStripMenuItem
             // 
+            this.canvasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resizeCanvasToolStripMenuItem});
             this.canvasToolStripMenuItem.Name = "canvasToolStripMenuItem";
             this.canvasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.canvasToolStripMenuItem.Text = "Canvas";
             // 
-            // sizebox
+            // resizeCanvasToolStripMenuItem
             // 
-            this.sizebox.Location = new System.Drawing.Point(572, 3);
-            this.sizebox.Name = "sizebox";
-            this.sizebox.Size = new System.Drawing.Size(28, 20);
-            this.sizebox.TabIndex = 2;
-            this.sizebox.Text = "10";
-            this.sizebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.sizebox.TextChanged += new System.EventHandler(this.sizebox_TextChanged);
+            this.resizeCanvasToolStripMenuItem.Name = "resizeCanvasToolStripMenuItem";
+            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.resizeCanvasToolStripMenuItem.Text = "Default Size";
+            this.resizeCanvasToolStripMenuItem.Click += new System.EventHandler(this.resizeCanvasToolStripMenuItem_Click);
             // 
-            // sizeText
+            // txtSizebox
             // 
-            this.sizeText.AutoSize = true;
-            this.sizeText.Location = new System.Drawing.Point(508, 6);
-            this.sizeText.Name = "sizeText";
-            this.sizeText.Size = new System.Drawing.Size(63, 13);
-            this.sizeText.TabIndex = 3;
-            this.sizeText.Text = "Brush Size: ";
+            this.txtSizebox.Location = new System.Drawing.Point(356, 3);
+            this.txtSizebox.Name = "txtSizebox";
+            this.txtSizebox.Size = new System.Drawing.Size(28, 20);
+            this.txtSizebox.TabIndex = 2;
+            this.txtSizebox.Text = "10";
+            this.txtSizebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSizebox.TextChanged += new System.EventHandler(this.sizebox_TextChanged);
             // 
-            // colorLabel
+            // lblBrushSize
             // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(30, 6);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(115, 13);
-            this.colorLabel.TabIndex = 6;
-            this.colorLabel.Text = "Click to Change Colour";
+            this.lblBrushSize.AutoSize = true;
+            this.lblBrushSize.BackColor = System.Drawing.SystemColors.Control;
+            this.lblBrushSize.Location = new System.Drawing.Point(287, 6);
+            this.lblBrushSize.Name = "lblBrushSize";
+            this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
+            this.lblBrushSize.TabIndex = 3;
+            this.lblBrushSize.Text = "Brush Size: ";
             // 
             // Canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 526);
-            this.Controls.Add(this.sizeText);
-            this.Controls.Add(this.sizebox);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(787, 561);
+            this.Controls.Add(this.lblBrushSize);
+            this.Controls.Add(this.txtSizebox);
             this.Controls.Add(this.colourPanel);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "Canvas";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Canvas_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fillButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eraserButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pencilButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPencil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.colourPanel.ResumeLayout(false);
             this.colourPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.red)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -374,11 +453,11 @@ namespace Digital_Canvas
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel colourPanel;
-        private System.Windows.Forms.PictureBox red;
+        private System.Windows.Forms.PictureBox colourSelect;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pencilButton;
-        private System.Windows.Forms.PictureBox eraserButton;
+        private System.Windows.Forms.PictureBox btnPencil;
+        private System.Windows.Forms.PictureBox btnEraser;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
@@ -397,10 +476,18 @@ namespace Digital_Canvas
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keyboardShortcutsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem canvasToolStripMenuItem;
-        private System.Windows.Forms.TextBox sizebox;
-        private System.Windows.Forms.PictureBox fillButton;
-        private System.Windows.Forms.Label sizeText;
-        private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.TextBox txtSizebox;
+        private System.Windows.Forms.PictureBox btnFill;
+        private System.Windows.Forms.Label lblBrushSize;
+        private System.Windows.Forms.Label lblColour;
         public System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem resizeCanvasToolStripMenuItem;
+        private System.Windows.Forms.Label lblCanvasSize;
+        private System.Windows.Forms.Label lblWidth;
+        private System.Windows.Forms.Label lblHeight;
+        private System.Windows.Forms.TextBox txtHeight;
+        private System.Windows.Forms.TextBox txtWidth;
+        private System.Windows.Forms.Button btnChangeSize;
     }
 }

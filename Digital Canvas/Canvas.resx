@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="eraserButton.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEraser.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAOVlJREFUeF7t
         3cGR7EiupeG3GC1q/3oUKBlm8zalyVhrUopcRUqPlqLNZgBWIBrpicwMBuF0uPu/+Iy3UJmkkwzD8Ygk
@@ -368,7 +368,7 @@
         2sIiAABYW1gEAABrC4sAAGBtYREAAKwtLAIAgJX9z3/9f9sZPzP8FmsdAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="pencilButton.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPencil.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAOVlJREFUeF7t
         3cGR7EiupeG3GC1q/3oUKBlm8zalyVhrUopcRUqPlqLNZgBWIBrpicwMBuF0uPu/+Iy3UJmkkwzD8Ygk
