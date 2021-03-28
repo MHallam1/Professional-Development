@@ -186,10 +186,10 @@ namespace Digital_Canvas
 
         private void btnChangeSize_Click(object sender, EventArgs e)
         {
-            // width of canvas differnce from window size is 115 and height diffence is 62
+            // width of canvas differnce from window size is 112 and height diffence is 62
             int formWidth;
             int formHeight;
-            int widthDiffernce = 115;
+            int widthDiffernce = 112;
             int heightDiffernce = 62;
             Canvas canvas = new Canvas();
             if ((txtWidth != null && txtHeight != null) && (Int32.TryParse(txtWidth.Text, out formWidth) && Int32.TryParse(txtHeight.Text, out formHeight)))
@@ -206,7 +206,9 @@ namespace Digital_Canvas
                    Size = new Size(formWidth + widthDiffernce, formWidth+ heightDiffernce);//give exact canvas size as required
                    
                    bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
-               }
+                   splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+                   // Console.WriteLine("###############" + splitContainer1.Panel2.Width + splitContainer1.Panel2.Height);
+                }
             }
             else
             {
