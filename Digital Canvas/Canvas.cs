@@ -16,16 +16,20 @@ namespace Digital_Canvas
 
     public partial class Canvas : Form 
     {
-
-        //creating 
+        //Reference to graphics object.
         Graphics graphic;
+
+        //This ensures that anything the mouse is doing doesn't effect the panel
         int cursorX = -1;
         int cursorY= -1;
+
+        //When you press the mouse down this flag is set to true so that the move mouse button functions
         bool moving = false;
     
-        Pen pencil;
-        Color colour = Color.Black;
-        Color colourBkg = Color.White;
+        Pen pencil; //Pen Object Reference
+        Color colour = Color.Black; //Pen starting colour
+        Color colourBkg = Color.White; //Background colour used in panel
+
         int size = 10;
         ColorDialog diag = new ColorDialog();
         Bitmap bmap;
