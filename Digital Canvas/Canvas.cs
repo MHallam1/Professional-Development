@@ -29,15 +29,17 @@ namespace Digital_Canvas
         Pen pencil; //Pen Object Reference
         Color colour = Color.Black; //Pen starting colour
         Color colourBkg = Color.White; //Background colour used in panel
+        int size = 10; //Pen starting size
 
-        int size = 10;
-        ColorDialog diag = new ColorDialog();
+        ColorDialog diag;
         Bitmap bmap;
 
-        int defaultHeight = 600;
+
+        int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
         public Canvas()
         {
+            diag = new ColorDialog();
             InitializeComponent();
             txtSizebox.Text = size.ToString();
             size = Int32.Parse(txtSizebox.Text);
@@ -60,10 +62,13 @@ namespace Digital_Canvas
 
         }
    
+
         private void Canvas_Load(object sender, EventArgs e)// occurs when the application is run/code is run
         {
             Size = new Size(defaultWidth, defaultHeight);
         }
+        
+        //Colour Box Code
         private void red_Click(object sender, EventArgs e)// this is the colour box method, deals with changing colour
         {
             //colour selector method
@@ -72,7 +77,6 @@ namespace Digital_Canvas
            // pencil.Color = colours.BackColor; // sets the selected colour
            // colour = colours.BackColor;
 
-            using (diag)
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
                     pencil.Color = diag.Color;
