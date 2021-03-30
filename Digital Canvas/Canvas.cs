@@ -128,6 +128,7 @@ namespace Digital_Canvas
         {
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = Color.LightGreen;
         }
 
@@ -149,6 +150,7 @@ namespace Digital_Canvas
             pencil.Color = colourBkg; // sets to erase
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = Color.LightGreen;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
         }
 
@@ -156,6 +158,7 @@ namespace Digital_Canvas
         {
             pencil.Color = diag.Color; // sets the selected colour
             btnPencil.BackColor = Color.LightGreen;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
         }
@@ -219,6 +222,15 @@ namespace Digital_Canvas
                 MessageBox.Show("Invalid Canvas Dimensions", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
+        }
+
+        private void btnBrush_Click(object sender, EventArgs e)
+        {
+            pencil.Color = diag.Color; // sets the selected colour
+            btnPencil.BackColor = System.Drawing.Color.Transparent;
+            btnBrush.BackColor = Color.LightGreen;
+            btnEraser.BackColor = System.Drawing.Color.Transparent;
+            btnFill.BackColor = System.Drawing.Color.Transparent;
         }
     }
 }
