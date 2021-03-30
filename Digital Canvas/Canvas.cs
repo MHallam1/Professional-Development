@@ -56,11 +56,11 @@ namespace Digital_Canvas
 
         }
    
-        private void Canvas_Load(object sender, EventArgs e)
+        private void Canvas_Load(object sender, EventArgs e)// occurs when the application is run/code is run
         {
             Size = new Size(defaultWidth, defaultHeight);
         }
-        private void red_Click(object sender, EventArgs e)
+        private void red_Click(object sender, EventArgs e)// this is the colour box method, deals with changing colour
         {
             //colour selector method
             PictureBox colours = (PictureBox)sender;
@@ -76,7 +76,7 @@ namespace Digital_Canvas
                 }
         }
 
-        private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e)
+        private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is pressed/held down
         {
             moving = true;
             cursorX = e.X; // gets mouse X location
@@ -84,12 +84,12 @@ namespace Digital_Canvas
             splitContainer1.Panel2.Cursor = Cursors.Cross;
         }
 
-        private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e)
+        private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is moved but will only run if mouse button is down due to boolean flag
         {
             // graphic = splitContainer1.Panel2.CreateGraphics();// updates graphic size when window size changes
 
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
-            using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap ###drawing flickers need to figure out a fix
+            using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
                 if (moving && cursorX != -1 && cursorY != -1)
                 {
@@ -107,7 +107,7 @@ namespace Digital_Canvas
 
         }
 
-        private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e)
+        private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e) // occurs when mouse button is not being pressed (when you let go of it)
         {
             moving = false;
             cursorX= -1;
@@ -115,19 +115,19 @@ namespace Digital_Canvas
             splitContainer1.Panel2.Cursor = Cursors.Default;
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) // this is the new option form drop down
         {
             graphic.Clear(colourBkg);
         }
 
-        private void fillButton_Click(object sender, EventArgs e)
+        private void fillButton_Click(object sender, EventArgs e)// customisation of the fill button
         {
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = Color.LightGreen;
         }
 
-        private void sizebox_TextChanged(object sender, EventArgs e)
+        private void sizebox_TextChanged(object sender, EventArgs e)// select the size of brush
         {
             int value = 0;
             if(int.TryParse(txtSizebox.Text, out value)==false)
@@ -140,7 +140,7 @@ namespace Digital_Canvas
             }
         }
 
-        private void eraserButton_Click_1(object sender, EventArgs e)
+        private void eraserButton_Click_1(object sender, EventArgs e) //code and customisation of erasser button
         {
             pencil.Color = colourBkg; // sets to erase
             btnPencil.BackColor = System.Drawing.Color.Transparent;
@@ -148,7 +148,7 @@ namespace Digital_Canvas
             btnFill.BackColor = System.Drawing.Color.Transparent;
         }
 
-        private void pencilButton_Click_1(object sender, EventArgs e)
+        private void pencilButton_Click_1(object sender, EventArgs e)// code for pencil button 
         {
             pencil.Color = diag.Color; // sets the selected colour
             btnPencil.BackColor = Color.LightGreen;
@@ -164,14 +164,14 @@ namespace Digital_Canvas
             bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)//  this is the larger part of the split container 
         {
             // Using this to create drawing unlike before to enable us to save drawings
             Graphics g = e.Graphics;
             g.DrawImage(bmap, Point.Empty);
         }
 
-        private void resizeCanvasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void resizeCanvasToolStripMenuItem_Click(object sender, EventArgs e)// option form the menustrip 
         {
             //splitContainer1.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
             // resize to default
@@ -184,7 +184,7 @@ namespace Digital_Canvas
 
         }
 
-        private void btnChangeSize_Click(object sender, EventArgs e)
+        private void btnChangeSize_Click(object sender, EventArgs e) // changing size of the canvas
         {
             // width of canvas differnce from window size is 112 and height diffence is 62
             int formWidth;
