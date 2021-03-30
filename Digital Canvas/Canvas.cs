@@ -16,24 +16,30 @@ namespace Digital_Canvas
 
     public partial class Canvas : Form 
     {
-
-        //creating 
+        //Reference to graphics object.
         Graphics graphic;
+
+        //This ensures that anything the mouse is doing doesn't effect the panel
         int cursorX = -1;
         int cursorY= -1;
+
+        //When you press the mouse down this flag is set to true so that the move mouse button functions
         bool moving = false;
     
-        Pen pencil;
-        Color colour = Color.Black;
-        Color colourBkg = Color.White;
-        int size = 10;
-        ColorDialog diag = new ColorDialog();
+        Pen pencil; //Pen Object Reference
+        Color colour = Color.Black; //Pen starting colour
+        Color colourBkg = Color.White; //Background colour used in panel
+        int size = 10; //Pen starting size
+
+        ColorDialog diag;
         Bitmap bmap;
 
-        int defaultHeight = 600;
+
+        int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
         public Canvas()
         {
+            diag = new ColorDialog();
             InitializeComponent();
             txtSizebox.Text = size.ToString();
             size = Int32.Parse(txtSizebox.Text);
@@ -56,10 +62,13 @@ namespace Digital_Canvas
 
         }
    
+
         private void Canvas_Load(object sender, EventArgs e)// occurs when the application is run/code is run
         {
             Size = new Size(defaultWidth, defaultHeight);
         }
+        
+        //Colour Box Code
         private void red_Click(object sender, EventArgs e)// this is the colour box method, deals with changing colour
         {
             //colour selector method
@@ -68,7 +77,6 @@ namespace Digital_Canvas
            // pencil.Color = colours.BackColor; // sets the selected colour
            // colour = colours.BackColor;
 
-            using (diag)
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
                     pencil.Color = diag.Color;
