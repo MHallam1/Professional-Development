@@ -31,6 +31,8 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnBrush = new System.Windows.Forms.PictureBox();
+            this.btnEraser = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
             this.lblHeight = new System.Windows.Forms.Label();
@@ -38,7 +40,6 @@ namespace Digital_Canvas
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.btnChangeSize = new System.Windows.Forms.Button();
             this.btnFill = new System.Windows.Forms.PictureBox();
-            this.btnEraser = new System.Windows.Forms.PictureBox();
             this.btnPencil = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colourPanel = new System.Windows.Forms.Panel();
@@ -71,8 +72,9 @@ namespace Digital_Canvas
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPencil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.colourPanel.SuspendLayout();
@@ -91,6 +93,8 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.btnBrush);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEraser);
             this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
             this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
             this.splitContainer1.Panel1.Controls.Add(this.lblHeight);
@@ -98,7 +102,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel1.Controls.Add(this.txtWidth);
             this.splitContainer1.Panel1.Controls.Add(this.btnChangeSize);
             this.splitContainer1.Panel1.Controls.Add(this.btnFill);
-            this.splitContainer1.Panel1.Controls.Add(this.btnEraser);
             this.splitContainer1.Panel1.Controls.Add(this.btnPencil);
             // 
             // splitContainer1.Panel2
@@ -113,11 +116,34 @@ namespace Digital_Canvas
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnBrush
+            // 
+            this.btnBrush.Image = ((System.Drawing.Image)(resources.GetObject("btnBrush.Image")));
+            this.btnBrush.Location = new System.Drawing.Point(19, 57);
+            this.btnBrush.Name = "btnBrush";
+            this.btnBrush.Size = new System.Drawing.Size(56, 50);
+            this.btnBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBrush.TabIndex = 10;
+            this.btnBrush.TabStop = false;
+            this.btnBrush.Click += new System.EventHandler(this.btnBrush_Click);
+            // 
+            // btnEraser
+            // 
+            this.btnEraser.Image = global::Digital_Canvas.Properties.Resources.eraser;
+            this.btnEraser.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEraser.InitialImage")));
+            this.btnEraser.Location = new System.Drawing.Point(19, 165);
+            this.btnEraser.Name = "btnEraser";
+            this.btnEraser.Size = new System.Drawing.Size(56, 50);
+            this.btnEraser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEraser.TabIndex = 4;
+            this.btnEraser.TabStop = false;
+            this.btnEraser.Click += new System.EventHandler(this.eraserButton_Click_1);
+            // 
             // lblCanvasSize
             // 
             this.lblCanvasSize.AutoSize = true;
             this.lblCanvasSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCanvasSize.Location = new System.Drawing.Point(12, 407);
+            this.lblCanvasSize.Location = new System.Drawing.Point(9, 409);
             this.lblCanvasSize.Name = "lblCanvasSize";
             this.lblCanvasSize.Size = new System.Drawing.Size(77, 15);
             this.lblCanvasSize.TabIndex = 9;
@@ -126,7 +152,7 @@ namespace Digital_Canvas
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(11, 469);
+            this.lblWidth.Location = new System.Drawing.Point(3, 465);
             this.lblWidth.Name = "lblWidth";
             this.lblWidth.Size = new System.Drawing.Size(35, 13);
             this.lblWidth.TabIndex = 8;
@@ -135,7 +161,7 @@ namespace Digital_Canvas
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(11, 443);
+            this.lblHeight.Location = new System.Drawing.Point(3, 439);
             this.lblHeight.Name = "lblHeight";
             this.lblHeight.Size = new System.Drawing.Size(38, 13);
             this.lblHeight.TabIndex = 7;
@@ -143,23 +169,23 @@ namespace Digital_Canvas
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(61, 436);
+            this.txtHeight.Location = new System.Drawing.Point(58, 436);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(30, 20);
             this.txtHeight.TabIndex = 6;
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(61, 462);
+            this.txtWidth.Location = new System.Drawing.Point(58, 462);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(30, 20);
             this.txtWidth.TabIndex = 5;
             // 
             // btnChangeSize
             // 
-            this.btnChangeSize.Location = new System.Drawing.Point(14, 485);
+            this.btnChangeSize.Location = new System.Drawing.Point(3, 488);
             this.btnChangeSize.Name = "btnChangeSize";
-            this.btnChangeSize.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeSize.Size = new System.Drawing.Size(89, 23);
             this.btnChangeSize.TabIndex = 4;
             this.btnChangeSize.Text = "Change Size";
             this.btnChangeSize.UseVisualStyleBackColor = true;
@@ -168,7 +194,7 @@ namespace Digital_Canvas
             // btnFill
             // 
             this.btnFill.Image = global::Digital_Canvas.Properties.Resources.fill;
-            this.btnFill.Location = new System.Drawing.Point(3, 115);
+            this.btnFill.Location = new System.Drawing.Point(19, 111);
             this.btnFill.Name = "btnFill";
             this.btnFill.Size = new System.Drawing.Size(56, 50);
             this.btnFill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -176,23 +202,11 @@ namespace Digital_Canvas
             this.btnFill.TabStop = false;
             this.btnFill.Click += new System.EventHandler(this.fillButton_Click);
             // 
-            // btnEraser
-            // 
-            this.btnEraser.Image = global::Digital_Canvas.Properties.Resources.eraser;
-            this.btnEraser.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEraser.InitialImage")));
-            this.btnEraser.Location = new System.Drawing.Point(3, 59);
-            this.btnEraser.Name = "btnEraser";
-            this.btnEraser.Size = new System.Drawing.Size(56, 50);
-            this.btnEraser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEraser.TabIndex = 4;
-            this.btnEraser.TabStop = false;
-            this.btnEraser.Click += new System.EventHandler(this.eraserButton_Click_1);
-            // 
             // btnPencil
             // 
             this.btnPencil.Image = global::Digital_Canvas.Properties.Resources.pencil;
             this.btnPencil.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPencil.InitialImage")));
-            this.btnPencil.Location = new System.Drawing.Point(3, 3);
+            this.btnPencil.Location = new System.Drawing.Point(19, 3);
             this.btnPencil.Name = "btnPencil";
             this.btnPencil.Size = new System.Drawing.Size(56, 50);
             this.btnPencil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -221,7 +235,7 @@ namespace Digital_Canvas
             // lblColour
             // 
             this.lblColour.AutoSize = true;
-            this.lblColour.Location = new System.Drawing.Point(30, 6);
+            this.lblColour.Location = new System.Drawing.Point(68, 6);
             this.lblColour.Name = "lblColour";
             this.lblColour.Size = new System.Drawing.Size(115, 13);
             this.lblColour.TabIndex = 6;
@@ -232,7 +246,7 @@ namespace Digital_Canvas
             this.colourSelect.BackColor = System.Drawing.Color.Black;
             this.colourSelect.Location = new System.Drawing.Point(4, 3);
             this.colourSelect.Name = "colourSelect";
-            this.colourSelect.Size = new System.Drawing.Size(20, 18);
+            this.colourSelect.Size = new System.Drawing.Size(58, 18);
             this.colourSelect.TabIndex = 5;
             this.colourSelect.TabStop = false;
             this.colourSelect.Click += new System.EventHandler(this.red_Click);
@@ -264,20 +278,20 @@ namespace Digital_Canvas
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -289,7 +303,7 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
@@ -319,7 +333,7 @@ namespace Digital_Canvas
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import Image";
             // 
             // editToolStripMenuItem
@@ -408,7 +422,7 @@ namespace Digital_Canvas
             // 
             this.lblBrushSize.AutoSize = true;
             this.lblBrushSize.BackColor = System.Drawing.SystemColors.Control;
-            this.lblBrushSize.Location = new System.Drawing.Point(287, 6);
+            this.lblBrushSize.Location = new System.Drawing.Point(290, 6);
             this.lblBrushSize.Name = "lblBrushSize";
             this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
             this.lblBrushSize.TabIndex = 3;
@@ -436,8 +450,9 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPencil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.colourPanel.ResumeLayout(false);
@@ -489,5 +504,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Button btnChangeSize;
+        private System.Windows.Forms.PictureBox btnBrush;
     }
 }

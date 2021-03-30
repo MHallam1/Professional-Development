@@ -22,12 +22,12 @@ namespace Digital_Canvas
         int cursorX = -1;
         int cursorY= -1;
         bool moving = false;
-    
+
         Pen pencil;
         Color colour = Color.Black;
         Color colourBkg = Color.White;
         int size = 10;
-        ColorDialog diag = new ColorDialog();
+         ColorDialog diag = new ColorDialog();
         Bitmap bmap;
 
         int defaultHeight = 600;
@@ -35,7 +35,6 @@ namespace Digital_Canvas
         public Canvas()
         {
             InitializeComponent();
-            txtSizebox.Text = size.ToString();
             size = Int32.Parse(txtSizebox.Text);
 
             graphic = splitContainer1.Panel2.CreateGraphics();
@@ -44,7 +43,6 @@ namespace Digital_Canvas
             graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line  rounded
             pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            btnPencil.BackColor = Color.LightGreen;
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
             // splitContainer1.Panel2.MouseMove += splitContainer1_Panel2_MouseMove;
@@ -53,7 +51,7 @@ namespace Digital_Canvas
             typeof(SplitContainer).InvokeMember("DoubleBuffered",
                  BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, splitContainer1.Panel2,
                  new object[] { true });
-
+            btnPencil.BackColor = Color.LightGreen;
         }
    
         private void Canvas_Load(object sender, EventArgs e)
@@ -125,6 +123,7 @@ namespace Digital_Canvas
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = Color.LightGreen;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void sizebox_TextChanged(object sender, EventArgs e)
@@ -146,6 +145,7 @@ namespace Digital_Canvas
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = Color.LightGreen;
             btnFill.BackColor = System.Drawing.Color.Transparent;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void pencilButton_Click_1(object sender, EventArgs e)
@@ -154,6 +154,7 @@ namespace Digital_Canvas
             btnPencil.BackColor = Color.LightGreen;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -215,6 +216,21 @@ namespace Digital_Canvas
                 MessageBox.Show("Invalid Canvas Dimensions", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
+        }
+
+        private void btnBrush_Click(object sender, EventArgs e)
+        {
+            pencil.Color = diag.Color; // sets the selected colour
+            btnPencil.BackColor = System.Drawing.Color.Transparent;
+            btnEraser.BackColor = System.Drawing.Color.Transparent;
+            btnFill.BackColor = System.Drawing.Color.Transparent;
+            btnBrush.BackColor = Color.LightGreen;
+            pencil.GetType();
+            if (pencil.PenType == System.Drawing.Drawing2D.PenType.HatchFill)
+            {
+
+            }
+
         }
     }
 }
