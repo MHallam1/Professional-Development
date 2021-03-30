@@ -39,23 +39,20 @@ namespace Digital_Canvas
         int defaultWidth = 800;
         public Canvas()
         {
-            diag = new ColorDialog();
-            InitializeComponent();
-            txtSizebox.Text = size.ToString();
-            size = Int32.Parse(txtSizebox.Text);
-
-            graphic = splitContainer1.Panel2.CreateGraphics();
+            diag = new ColorDialog(); //Initialised ColorDialog for diag
+            InitializeComponent(); //Runs the form
+            
+            txtSizebox.Text = size.ToString(); //Takes the default text and converts it to string to display in textbox
+            
 
             pencil = new Pen(colour, size);
-            graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line  rounded
-            pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
+            pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
             btnPencil.BackColor = Color.LightGreen;
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
-            // splitContainer1.Panel2.MouseMove += splitContainer1_Panel2_MouseMove;
-            //splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
-             
+
+            //Prevents flickering whilst drawing
             typeof(SplitContainer).InvokeMember("DoubleBuffered",
                  BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, splitContainer1.Panel2,
                  new object[] { true });
@@ -63,25 +60,26 @@ namespace Digital_Canvas
         }
    
 
-        private void Canvas_Load(object sender, EventArgs e)// occurs when the application is run/code is run
+        private void Canvas_Load(object sender, EventArgs e)//occurs when the application is run/code is run
         {
-            Size = new Size(defaultWidth, defaultHeight);
+            Size = new Size(defaultWidth, defaultHeight); //Sets width and height of the application 
         }
         
         //Colour Box Code
-        private void red_Click(object sender, EventArgs e)// this is the colour box method, deals with changing colour
+        private void colourSelect_Click(object sender, EventArgs e)
         {
             //colour selector method
             PictureBox colours = (PictureBox)sender;
             colours.Invalidate();
-           // pencil.Color = colours.BackColor; // sets the selected colour
-           // colour = colours.BackColor;
+            // pencil.Color = colours.BackColor; // sets the selected colour
+            // colour = colours.BackColor;
 
-                if (diag.ShowDialog() == DialogResult.OK)
-                {
-                    pencil.Color = diag.Color;
-                    colours.BackColor = diag.Color;
-                }
+
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                pencil.Color = diag.Color;
+                colours.BackColor = diag.Color;
+            }
         }
 
         private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is pressed/held down
@@ -94,8 +92,6 @@ namespace Digital_Canvas
 
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is moved but will only run if mouse button is down due to boolean flag
         {
-            // graphic = splitContainer1.Panel2.CreateGraphics();// updates graphic size when window size changes
-
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
