@@ -48,7 +48,7 @@ namespace Digital_Canvas
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
             // splitContainer1.Panel2.MouseMove += splitContainer1_Panel2_MouseMove;
-            //splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
+            // splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
              
             typeof(SplitContainer).InvokeMember("DoubleBuffered",
                  BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, splitContainer1.Panel2,
