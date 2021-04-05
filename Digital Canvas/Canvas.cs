@@ -18,7 +18,7 @@ namespace Digital_Canvas
     {
         //Reference to graphics object.
         Graphics graphic;
-
+        SaveFileDialog saveDialog = new SaveFileDialog();
         //This ensures that anything the mouse is doing doesn't effect the panel
         int cursorX = -1;
         int cursorY= -1;
@@ -33,7 +33,7 @@ namespace Digital_Canvas
 
         ColorDialog diag;
         Bitmap bmap;
-
+        String fileTypeDefaultSave = "bmp";
 
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
@@ -167,8 +167,38 @@ namespace Digital_Canvas
         {
             // need to figure out how to save it as a new file
 
-          
-            bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
+
+            // bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                // fileTypeDefault is set when a file is saved using saved as 
+                if (fileTypeDefaultSave == "bmp")
+                {
+                    bmap.Save(folderName + ".bmp");
+                }
+                else if (fileTypeDefaultSave == "jpg")
+                {
+                    bmap.Save(folderName + ".jpg");
+                }
+                else if (fileTypeDefaultSave == "png")
+                {
+                    bmap.Save(folderName + ".png");
+                }
+                else if (fileTypeDefaultSave == "gif")
+                {
+                    bmap.Save(folderName + ".gif");
+                }
+
+            }
+           
+            
+
+
+
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)//  this is the larger part of the split container 
@@ -231,6 +261,79 @@ namespace Digital_Canvas
             btnBrush.BackColor = Color.LightGreen;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
+        }
+
+        private void pNGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".png");
+                fileTypeDefaultSave = "png";
+            }
+        }
+
+        private void jPGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+           //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(folderName+".jpg");
+                fileTypeDefaultSave = "jpg";
+            }
+        }
+
+        private void bMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".bmp");
+                fileTypeDefaultSave = "bmp";
+            }
+        }
+
+        private void gIFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".gif");
+                fileTypeDefaultSave = "gif";
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int widthDiffernce = 112;
+            int heightDiffernce = 62;
+            var openFile = new OpenFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = openFile.ShowDialog();
+            // loads the bitmap and hen rsizes the canvas accordingly
+            if (result == DialogResult.OK)
+            {
+                
+
+                bmap = (Bitmap)Bitmap.FromFile(openFile.FileName);
+                splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
+                Size = new Size(bmap.Width + widthDiffernce, bmap.Height + heightDiffernce);//give exact canvas size as required
+
+               // bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
+                splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+            }
         }
     }
 }
