@@ -1,56 +1,49 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Digital_Canvas
 {
+    
 
 
-
-    public partial class Canvas : Form
+    public partial class Canvas : Form 
     {
-
+        //Reference to graphics object.
+        Graphics graphic;
+        SaveFileDialog saveDialog = new SaveFileDialog();
         //This ensures that anything the mouse is doing doesn't effect the panel
         int cursorX = -1;
-        int cursorY = -1;
+        int cursorY= -1;
 
         //When you press the mouse down this flag is set to true so that the move mouse button functions
         bool moving = false;
-
+    
         Pen pencil; //Pen Object Reference
         Color colour = Color.Black; //Pen starting colour
         Color colourBkg = Color.White; //Background colour used in panel
         int size = 10; //Pen starting size
 
         ColorDialog diag;
-        OpenFileDialog file;
         Bitmap bmap;
-
+        String fileTypeDefaultSave = "bmp";
 
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
-
         public Canvas()
         {
             diag = new ColorDialog(); //Initialised ColorDialog for diag
-            file = new OpenFileDialog
-            {
-                Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG"
-            };
-
             InitializeComponent(); //Runs the form
-
+            
             txtSizebox.Text = size.ToString(); //Takes the default text and converts it to string to display in textbox
+            
 
             pencil = new Pen(colour, size);
             pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
@@ -65,13 +58,13 @@ namespace Digital_Canvas
                  new object[] { true });
 
         }
-
+   
 
         private void Canvas_Load(object sender, EventArgs e)//occurs when the application is run/code is run
         {
             Size = new Size(defaultWidth, defaultHeight); //Sets width and height of the application 
         }
-
+        
         //Colour Box Code
         private void colourSelect_Click(object sender, EventArgs e)
         {
@@ -104,13 +97,13 @@ namespace Digital_Canvas
             {
                 if (moving && cursorX != -1 && cursorY != -1)
                 {
-
+               
                     g.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
                     //update the cursorX and cursorY to draw as intended
-                    cursorX = e.X;
-                    cursorY = e.Y;
+                   cursorX= e.X; 
+                   cursorY= e.Y;
                 }
-
+                
                 //splitContainer1.Panel2.do();
             }
             splitContainer1.Panel2.Invalidate();
@@ -121,9 +114,14 @@ namespace Digital_Canvas
         private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e) // occurs when mouse button is not being pressed (when you let go of it)
         {
             moving = false;
-            cursorX = -1;
-            cursorX = -1;
+            cursorX= -1;
+            cursorX= -1;
             splitContainer1.Panel2.Cursor = Cursors.Default;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) // this is the new option form drop down
+        {
+            graphic.Clear(colourBkg);
         }
 
         private void fillButton_Click(object sender, EventArgs e)// customisation of the fill button
@@ -132,13 +130,12 @@ namespace Digital_Canvas
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = Color.LightGreen;
-            btnEyedropper.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void sizebox_TextChanged(object sender, EventArgs e)// select the size of brush
         {
             int value = 0;
-            if (int.TryParse(txtSizebox.Text, out value) == false)
+            if(int.TryParse(txtSizebox.Text, out value)==false)
             {
             }
             else
@@ -155,7 +152,6 @@ namespace Digital_Canvas
             btnEraser.BackColor = Color.LightGreen;
             btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnEyedropper.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void pencilButton_Click_1(object sender, EventArgs e)// code for pencil button 
@@ -165,7 +161,6 @@ namespace Digital_Canvas
             btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnEyedropper.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -173,7 +168,37 @@ namespace Digital_Canvas
             // need to figure out how to save it as a new file
 
 
-            bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
+            // bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                // fileTypeDefault is set when a file is saved using saved as 
+                if (fileTypeDefaultSave == "bmp")
+                {
+                    bmap.Save(folderName + ".bmp");
+                }
+                else if (fileTypeDefaultSave == "jpg")
+                {
+                    bmap.Save(folderName + ".jpg");
+                }
+                else if (fileTypeDefaultSave == "png")
+                {
+                    bmap.Save(folderName + ".png");
+                }
+                else if (fileTypeDefaultSave == "gif")
+                {
+                    bmap.Save(folderName + ".gif");
+                }
+
+            }
+           
+            
+
+
+
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)//  this is the larger part of the split container 
@@ -188,7 +213,7 @@ namespace Digital_Canvas
             //splitContainer1.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
             // resize to default
             Size = new Size(defaultWidth, defaultHeight);
-            // splitContainer1.pane = 300;//new System.Drawing.Size(300, 300);
+           // splitContainer1.pane = 300;//new System.Drawing.Size(300, 300);
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
 
 
@@ -206,26 +231,26 @@ namespace Digital_Canvas
             Canvas canvas = new Canvas();
             if ((txtWidth != null && txtHeight != null) && (Int32.TryParse(txtWidth.Text, out formWidth) && Int32.TryParse(txtHeight.Text, out formHeight)))
             {
-                if (formHeight < canvas.MinimumSize.Height || formWidth < canvas.MinimumSize.Width)
+                if(formHeight < canvas.MinimumSize.Height || formWidth < canvas.MinimumSize.Width)
                 {
                     MessageBox.Show("Minimum Height and Width are: " + canvas.MinimumSize.Height + " & " + canvas.MinimumSize.Width + " respectively.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    
                 }
 
-                else if (MessageBox.Show("Resizing Canvas will erase all work on canvas. Do you wish to continue?", "Alert", (MessageBoxButtons.YesNo), MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
-                    Size = new Size(formWidth + widthDiffernce, formWidth + heightDiffernce);//give exact canvas size as required
-
-                    bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
-                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
-                    // Console.WriteLine("###############" + splitContainer1.Panel2.Width + splitContainer1.Panel2.Height);
+               else if (MessageBox.Show("Resizing Canvas will erase all work on canvas. Do you wish to continue?", "Alert", (MessageBoxButtons.YesNo),MessageBoxIcon.Question ) == DialogResult.Yes)
+               {
+                   splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
+                   Size = new Size(formWidth + widthDiffernce, formWidth+ heightDiffernce);//give exact canvas size as required
+                   
+                   bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
+                   splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+                   // Console.WriteLine("###############" + splitContainer1.Panel2.Width + splitContainer1.Panel2.Height);
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Canvas Dimensions", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                
             }
         }
 
@@ -236,57 +261,79 @@ namespace Digital_Canvas
             btnBrush.BackColor = Color.LightGreen;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
             btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnEyedropper.BackColor = System.Drawing.Color.Transparent;
         }
 
-        private void btnEyedropper_Click(object sender, EventArgs e)
+        private void pNGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnEyedropper.BackColor = Color.LightGreen;
-        }
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.InitialDirectory = @"C:\";
-            open.ShowDialog();
-
-            //Image newImage = Image.FromFile("erjkaser.png");
-            //Point ulCorner = new Point(100, 100);
-            //e.Graphics.DrawImage(newImage, ulCorner);
-            //OpenFileDialog open = new OpenFileDialog();
-            //if(open.ShowDialog()=DialogResult.OK)
-            //{
-            //open.FileName();
-            //}
-
-            //DialogBox testDialog = new DialogBox();
-            //if (testDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //this.txtWidth.Text = testDialog.txtHeight.Text;
-            //}
-            //testDialog.Dispose();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                g.Clear(colourBkg);
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".png");
+                fileTypeDefaultSave = "png";
             }
         }
 
-        private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
+        private void jPGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Canvas newTab = new Canvas();
-            newTab.ShowDialog(this);
+            var saveDialogue = new SaveFileDialog();
+           //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(folderName+".jpg");
+                fileTypeDefaultSave = "jpg";
+            }
+        }
+
+        private void bMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".bmp");
+                fileTypeDefaultSave = "bmp";
+            }
+        }
+
+        private void gIFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialogue = new SaveFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = saveDialogue.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = saveDialogue.FileName;
+                bmap.Save(".gif");
+                fileTypeDefaultSave = "gif";
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int widthDiffernce = 112;
+            int heightDiffernce = 62;
+            var openFile = new OpenFileDialog();
+            //Show the file saving dialogue
+            DialogResult result = openFile.ShowDialog();
+            // loads the bitmap and hen rsizes the canvas accordingly
+            if (result == DialogResult.OK)
+            {
+                
 
+                bmap = (Bitmap)Bitmap.FromFile(openFile.FileName);
+                splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
+                Size = new Size(bmap.Width + widthDiffernce, bmap.Height + heightDiffernce);//give exact canvas size as required
+
+               // bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
+                splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+            }
         }
     }
 }

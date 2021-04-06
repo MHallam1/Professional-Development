@@ -9,6 +9,7 @@ namespace Digital_Canvas
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();

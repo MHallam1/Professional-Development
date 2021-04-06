@@ -31,7 +31,6 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnEyedropper = new System.Windows.Forms.PictureBox();
             this.btnBrush = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -67,17 +66,12 @@ namespace Digital_Canvas
             this.keyboardShortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.canvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resizeCanvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEyedropper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
@@ -99,7 +93,6 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.btnEyedropper);
             this.splitContainer1.Panel1.Controls.Add(this.btnBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
             this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
@@ -123,23 +116,11 @@ namespace Digital_Canvas
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
             // 
-            // btnEyedropper
-            // 
-            this.btnEyedropper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.btnEyedropper.Image = ((System.Drawing.Image)(resources.GetObject("btnEyedropper.Image")));
-            this.btnEyedropper.Location = new System.Drawing.Point(2, 94);
-            this.btnEyedropper.Name = "btnEyedropper";
-            this.btnEyedropper.Size = new System.Drawing.Size(47, 47);
-            this.btnEyedropper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEyedropper.TabIndex = 11;
-            this.btnEyedropper.TabStop = false;
-            this.btnEyedropper.Click += new System.EventHandler(this.btnEyedropper_Click);
-            // 
             // btnBrush
             // 
             this.btnBrush.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnBrush.Image = ((System.Drawing.Image)(resources.GetObject("btnBrush.Image")));
-            this.btnBrush.Location = new System.Drawing.Point(48, 3);
+            this.btnBrush.Location = new System.Drawing.Point(46, 3);
             this.btnBrush.Name = "btnBrush";
             this.btnBrush.Size = new System.Drawing.Size(47, 47);
             this.btnBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -203,7 +184,7 @@ namespace Digital_Canvas
             // 
             this.btnFill.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnFill.Image = global::Digital_Canvas.Properties.Resources.fill;
-            this.btnFill.Location = new System.Drawing.Point(48, 49);
+            this.btnFill.Location = new System.Drawing.Point(46, 49);
             this.btnFill.Name = "btnFill";
             this.btnFill.Size = new System.Drawing.Size(47, 47);
             this.btnFill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -216,7 +197,7 @@ namespace Digital_Canvas
             this.btnEraser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnEraser.Image = global::Digital_Canvas.Properties.Resources.eraser;
             this.btnEraser.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEraser.InitialImage")));
-            this.btnEraser.Location = new System.Drawing.Point(1, 50);
+            this.btnEraser.Location = new System.Drawing.Point(-1, 49);
             this.btnEraser.Name = "btnEraser";
             this.btnEraser.Size = new System.Drawing.Size(47, 47);
             this.btnEraser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -229,7 +210,7 @@ namespace Digital_Canvas
             this.btnPencil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnPencil.Image = global::Digital_Canvas.Properties.Resources.pencil;
             this.btnPencil.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPencil.InitialImage")));
-            this.btnPencil.Location = new System.Drawing.Point(2, 3);
+            this.btnPencil.Location = new System.Drawing.Point(0, 3);
             this.btnPencil.Name = "btnPencil";
             this.btnPencil.Size = new System.Drawing.Size(47, 47);
             this.btnPencil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -280,8 +261,7 @@ namespace Digital_Canvas
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.customizeToolStripMenuItem,
-            this.tabToolStripMenuItem});
+            this.customizeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(787, 24);
@@ -303,7 +283,7 @@ namespace Digital_Canvas
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -317,7 +297,7 @@ namespace Digital_Canvas
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -329,39 +309,42 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
             // 
             this.pNGToolStripMenuItem.Name = "pNGToolStripMenuItem";
-            this.pNGToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.pNGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pNGToolStripMenuItem.Text = "PNG";
+            this.pNGToolStripMenuItem.Click += new System.EventHandler(this.pNGToolStripMenuItem_Click);
             // 
             // jPGToolStripMenuItem
             // 
             this.jPGToolStripMenuItem.Name = "jPGToolStripMenuItem";
-            this.jPGToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.jPGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jPGToolStripMenuItem.Text = "JPG";
+            this.jPGToolStripMenuItem.Click += new System.EventHandler(this.jPGToolStripMenuItem_Click);
             // 
             // bMPToolStripMenuItem
             // 
             this.bMPToolStripMenuItem.Name = "bMPToolStripMenuItem";
-            this.bMPToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.bMPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bMPToolStripMenuItem.Text = "BMP";
+            this.bMPToolStripMenuItem.Click += new System.EventHandler(this.bMPToolStripMenuItem_Click);
             // 
             // gIFToolStripMenuItem
             // 
             this.gIFToolStripMenuItem.Name = "gIFToolStripMenuItem";
-            this.gIFToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.gIFToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gIFToolStripMenuItem.Text = "GIF";
+            this.gIFToolStripMenuItem.Click += new System.EventHandler(this.gIFToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import Image";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -435,28 +418,6 @@ namespace Digital_Canvas
             this.resizeCanvasToolStripMenuItem.Text = "Default Size";
             this.resizeCanvasToolStripMenuItem.Click += new System.EventHandler(this.resizeCanvasToolStripMenuItem_Click);
             // 
-            // tabToolStripMenuItem
-            // 
-            this.tabToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTabToolStripMenuItem,
-            this.removeTabToolStripMenuItem});
-            this.tabToolStripMenuItem.Name = "tabToolStripMenuItem";
-            this.tabToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.tabToolStripMenuItem.Text = "Tab";
-            // 
-            // newTabToolStripMenuItem
-            // 
-            this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.newTabToolStripMenuItem.Text = "Add";
-            this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripMenuItem_Click);
-            // 
-            // removeTabToolStripMenuItem
-            // 
-            this.removeTabToolStripMenuItem.Name = "removeTabToolStripMenuItem";
-            this.removeTabToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeTabToolStripMenuItem.Text = "Remove";
-            // 
             // txtSizebox
             // 
             this.txtSizebox.Location = new System.Drawing.Point(356, 3);
@@ -476,10 +437,6 @@ namespace Digital_Canvas
             this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // Canvas
             // 
@@ -503,7 +460,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnEyedropper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
@@ -559,10 +515,5 @@ namespace Digital_Canvas
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Button btnChangeSize;
         private System.Windows.Forms.PictureBox btnBrush;
-        private System.Windows.Forms.PictureBox btnEyedropper;
-        private System.Windows.Forms.ToolStripMenuItem tabToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeTabToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
