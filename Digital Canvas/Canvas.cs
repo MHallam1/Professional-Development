@@ -165,6 +165,9 @@ namespace Digital_Canvas
 
             // bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
             var saveDialogue = new SaveFileDialog();
+            saveDialogue.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            saveDialogue.Filter = ".png|PNG|.jpg;.jpeg;.jpe|JPG|.tif;.tiff|TIFF|.gif|GIF|.bmp|BMP|" + "All Graphics Types|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
+            saveDialogue.Title = "Save your file";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
@@ -315,6 +318,11 @@ namespace Digital_Canvas
             int widthDiffernce = 112;
             int heightDiffernce = 62;
             var openFile = new OpenFileDialog();
+         
+            openFile.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            openFile.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            openFile.Title = "Import an image";
             //Show the file saving dialogue
             DialogResult result = openFile.ShowDialog();
             // loads the bitmap and hen rsizes the canvas accordingly
@@ -346,11 +354,18 @@ namespace Digital_Canvas
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var imageDialogue = new SaveFileDialog();
+            var imageDialogue = new OpenFileDialog();
+
+            imageDialogue.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            imageDialogue.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            imageDialogue.Title = "Import an image";
+
+
             //Show the file saving dialogue
             DialogResult result = imageDialogue.ShowDialog();
             if (result == DialogResult.OK)
             {
+                
             }
         }
     }
