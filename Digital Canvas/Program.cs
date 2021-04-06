@@ -16,10 +16,6 @@ namespace Digital_Canvas
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Canvas());
 
-            Console.WriteLine("Test");
-            Console.WriteLine("meme meme");
-            Console.WriteLine("meme meme");
-            Console.WriteLine("meme 3444444444444444444");
         }
     }
 }
