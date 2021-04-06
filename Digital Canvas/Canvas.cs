@@ -365,7 +365,11 @@ namespace Digital_Canvas
             DialogResult result = imageDialogue.ShowDialog();
             if (result == DialogResult.OK)
             {
-                
+                Image image = Image.FromFile(imageDialogue.FileName);
+                using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
+                {
+                    g.DrawImage(image, 1, 1);
+                }
             }
         }
     }
