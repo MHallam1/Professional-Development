@@ -272,11 +272,12 @@ namespace Digital_Canvas
             // lblColour
             // 
             this.lblColour.AutoSize = true;
-            this.lblColour.Location = new System.Drawing.Point(4, 6);
+            this.lblColour.Location = new System.Drawing.Point(5, 6);
             this.lblColour.Name = "lblColour";
-            this.lblColour.Size = new System.Drawing.Size(37, 13);
+            this.lblColour.Size = new System.Drawing.Size(35, 13);
             this.lblColour.TabIndex = 6;
-            this.lblColour.Text = "Brush:";
+            this.lblColour.Text = "Draw:";
+            this.lblColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // colourSelect
             // 
@@ -496,6 +497,7 @@ namespace Digital_Canvas
             this.lblBgkColour.Size = new System.Drawing.Size(68, 13);
             this.lblBgkColour.TabIndex = 8;
             this.lblBgkColour.Text = "Background:";
+            this.lblBgkColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Canvas
             // 
