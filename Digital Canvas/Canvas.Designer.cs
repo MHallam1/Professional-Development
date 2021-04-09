@@ -31,6 +31,7 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnBrush = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace Digital_Canvas
             this.btnPencil = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colourPanel = new System.Windows.Forms.Panel();
+            this.bkgSelect = new System.Windows.Forms.PictureBox();
             this.lblColour = new System.Windows.Forms.Label();
             this.colourSelect = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -70,20 +72,21 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lblBgkColour = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPencil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.colourPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bkgSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -111,6 +114,7 @@ namespace Digital_Canvas
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
@@ -120,6 +124,18 @@ namespace Digital_Canvas
             this.splitContainer1.Size = new System.Drawing.Size(787, 538);
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
+            this.pictureBox3.Location = new System.Drawing.Point(-1, 93);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
             // 
             // btnBrush
             // 
@@ -234,26 +250,38 @@ namespace Digital_Canvas
             // colourPanel
             // 
             this.colourPanel.BackColor = System.Drawing.Color.Gainsboro;
+            this.colourPanel.Controls.Add(this.bkgSelect);
+            this.colourPanel.Controls.Add(this.lblBgkColour);
             this.colourPanel.Controls.Add(this.lblColour);
             this.colourPanel.Controls.Add(this.colourSelect);
-            this.colourPanel.Location = new System.Drawing.Point(390, 0);
+            this.colourPanel.Location = new System.Drawing.Point(399, 0);
             this.colourPanel.Name = "colourPanel";
-            this.colourPanel.Size = new System.Drawing.Size(186, 24);
+            this.colourPanel.Size = new System.Drawing.Size(155, 24);
             this.colourPanel.TabIndex = 0;
+            // 
+            // bkgSelect
+            // 
+            this.bkgSelect.BackColor = System.Drawing.Color.White;
+            this.bkgSelect.Location = new System.Drawing.Point(130, 3);
+            this.bkgSelect.Name = "bkgSelect";
+            this.bkgSelect.Size = new System.Drawing.Size(20, 18);
+            this.bkgSelect.TabIndex = 7;
+            this.bkgSelect.TabStop = false;
+            this.bkgSelect.Click += new System.EventHandler(this.bkgSelect_Click);
             // 
             // lblColour
             // 
             this.lblColour.AutoSize = true;
-            this.lblColour.Location = new System.Drawing.Point(30, 6);
+            this.lblColour.Location = new System.Drawing.Point(4, 6);
             this.lblColour.Name = "lblColour";
-            this.lblColour.Size = new System.Drawing.Size(115, 13);
+            this.lblColour.Size = new System.Drawing.Size(37, 13);
             this.lblColour.TabIndex = 6;
-            this.lblColour.Text = "Click to Change Colour";
+            this.lblColour.Text = "Brush:";
             // 
             // colourSelect
             // 
             this.colourSelect.BackColor = System.Drawing.Color.Black;
-            this.colourSelect.Location = new System.Drawing.Point(4, 3);
+            this.colourSelect.Location = new System.Drawing.Point(41, 3);
             this.colourSelect.Name = "colourSelect";
             this.colourSelect.Size = new System.Drawing.Size(20, 18);
             this.colourSelect.TabIndex = 5;
@@ -289,21 +317,21 @@ namespace Digital_Canvas
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -315,7 +343,7 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
@@ -349,7 +377,7 @@ namespace Digital_Canvas
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.importToolStripMenuItem.Text = "Import Image";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
@@ -460,17 +488,14 @@ namespace Digital_Canvas
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
             // 
-            // pictureBox3
+            // lblBgkColour
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(-1, 93);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.lblBgkColour.AutoSize = true;
+            this.lblBgkColour.Location = new System.Drawing.Point(64, 6);
+            this.lblBgkColour.Name = "lblBgkColour";
+            this.lblBgkColour.Size = new System.Drawing.Size(68, 13);
+            this.lblBgkColour.TabIndex = 8;
+            this.lblBgkColour.Text = "Background:";
             // 
             // Canvas
             // 
@@ -494,6 +519,7 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
@@ -501,10 +527,10 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.colourPanel.ResumeLayout(false);
             this.colourPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bkgSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,5 +579,7 @@ namespace Digital_Canvas
         private System.Windows.Forms.ToolStripMenuItem tabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox bkgSelect;
+        private System.Windows.Forms.Label lblBgkColour;
     }
 }

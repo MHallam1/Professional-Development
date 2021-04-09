@@ -26,10 +26,10 @@ namespace Digital_Canvas
         //When you press the mouse down this flag is set to true so that the move mouse button functions
         bool moving = false;
 
-        Pen pencil; //Pen Object Reference
         Color colour = Color.Black; //Pen starting colour
         Color colourBkg = Color.White; //Background colour used in panel
         int size = 10; //Pen starting size
+        Pen pencil, brush, eraser;
 
         ColorDialog diag;
         Bitmap bmap;
@@ -44,11 +44,20 @@ namespace Digital_Canvas
 
             txtSizebox.Text = size.ToString(); //Takes the default text and converts it to string to display in textbox
 
-
             pencil = new Pen(colour, size);
+            brush = new Pen(colour, size);
+            eraser = new Pen(colour, size);
             pencil.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
             pencil.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
+            brush.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
+            brush.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
+            eraser.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
+            eraser.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
+
             btnPencil.BackColor = Color.LightGreen;
+            brush.Color = colour;
+            eraser.Color = colourBkg;
+            pencil = brush;
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
 
@@ -74,11 +83,12 @@ namespace Digital_Canvas
             // pencil.Color = colours.BackColor; // sets the selected colour
             // colour = colours.BackColor;
 
-
             if (diag.ShowDialog() == DialogResult.OK)
             {
-                pencil.Color = diag.Color;
                 colours.BackColor = diag.Color;
+
+                colour = diag.Color;
+                brush.Color = diag.Color;
             }
         }
 
@@ -142,7 +152,8 @@ namespace Digital_Canvas
 
         private void eraserButton_Click_1(object sender, EventArgs e) //code and customisation of erasser button
         {
-            pencil.Color = colourBkg; // sets to erase
+            pencil = eraser;
+
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = Color.LightGreen;
             btnBrush.BackColor = System.Drawing.Color.Transparent;
@@ -151,7 +162,8 @@ namespace Digital_Canvas
 
         private void pencilButton_Click_1(object sender, EventArgs e)// code for pencil button 
         {
-            pencil.Color = diag.Color; // sets the selected colour
+            pencil = brush;
+
             btnPencil.BackColor = Color.LightGreen;
             btnBrush.BackColor = System.Drawing.Color.Transparent;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
@@ -254,7 +266,8 @@ namespace Digital_Canvas
 
         private void btnBrush_Click(object sender, EventArgs e)
         {
-            pencil.Color = diag.Color; // sets the selected colour
+            pencil = brush;
+
             btnPencil.BackColor = System.Drawing.Color.Transparent;
             btnBrush.BackColor = Color.LightGreen;
             btnEraser.BackColor = System.Drawing.Color.Transparent;
@@ -360,7 +373,6 @@ namespace Digital_Canvas
             imageDialogue.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             imageDialogue.Title = "Import an image";
 
-
             //Show the file saving dialogue
             DialogResult result = imageDialogue.ShowDialog();
             if (result == DialogResult.OK)
@@ -370,6 +382,24 @@ namespace Digital_Canvas
                 {
                     g.DrawImage(image, 1, 1);
                 }
+            }
+        }
+
+        private void bkgSelect_Click(object sender, EventArgs e)
+        {
+            //colour selector method
+            PictureBox colours = (PictureBox)sender;
+            colours.Invalidate();
+            // pencil.Color = colours.BackColor; // sets the selected colour
+            // colour = colours.BackColor;
+
+
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                bkgSelect.BackColor = diag.Color;
+
+                colourBkg = diag.Color;
+                eraser.Color = diag.Color;
             }
         }
     }
