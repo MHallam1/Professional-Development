@@ -31,7 +31,7 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnEyedrooper = new System.Windows.Forms.PictureBox();
             this.btnBrush = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@ namespace Digital_Canvas
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colourPanel = new System.Windows.Forms.Panel();
             this.bkgSelect = new System.Windows.Forms.PictureBox();
+            this.lblBgkColour = new System.Windows.Forms.Label();
             this.lblColour = new System.Windows.Forms.Label();
             this.colourSelect = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -72,12 +73,11 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.lblBgkColour = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEyedrooper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
@@ -100,7 +100,7 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEyedrooper);
             this.splitContainer1.Panel1.Controls.Add(this.btnBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
             this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
@@ -125,17 +125,18 @@ namespace Digital_Canvas
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
             // 
-            // pictureBox3
+            // btnEyedrooper
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(-1, 93);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.btnEyedrooper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnEyedrooper.Image = ((System.Drawing.Image)(resources.GetObject("btnEyedrooper.Image")));
+            this.btnEyedrooper.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEyedrooper.InitialImage")));
+            this.btnEyedrooper.Location = new System.Drawing.Point(-1, 93);
+            this.btnEyedrooper.Name = "btnEyedrooper";
+            this.btnEyedrooper.Size = new System.Drawing.Size(47, 47);
+            this.btnEyedrooper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEyedrooper.TabIndex = 12;
+            this.btnEyedrooper.TabStop = false;
+            this.btnEyedrooper.Click += new System.EventHandler(this.btnEyedrooper_Click);
             // 
             // btnBrush
             // 
@@ -268,6 +269,16 @@ namespace Digital_Canvas
             this.bkgSelect.TabIndex = 7;
             this.bkgSelect.TabStop = false;
             this.bkgSelect.Click += new System.EventHandler(this.bkgSelect_Click);
+            // 
+            // lblBgkColour
+            // 
+            this.lblBgkColour.AutoSize = true;
+            this.lblBgkColour.Location = new System.Drawing.Point(64, 6);
+            this.lblBgkColour.Name = "lblBgkColour";
+            this.lblBgkColour.Size = new System.Drawing.Size(68, 13);
+            this.lblBgkColour.TabIndex = 8;
+            this.lblBgkColour.Text = "Background:";
+            this.lblBgkColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblColour
             // 
@@ -489,16 +500,6 @@ namespace Digital_Canvas
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
             // 
-            // lblBgkColour
-            // 
-            this.lblBgkColour.AutoSize = true;
-            this.lblBgkColour.Location = new System.Drawing.Point(64, 6);
-            this.lblBgkColour.Name = "lblBgkColour";
-            this.lblBgkColour.Size = new System.Drawing.Size(68, 13);
-            this.lblBgkColour.TabIndex = 8;
-            this.lblBgkColour.Text = "Background:";
-            this.lblBgkColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,18 +511,20 @@ namespace Digital_Canvas
             this.Controls.Add(this.colourPanel);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1919, 1076);
             this.MinimumSize = new System.Drawing.Size(599, 575);
             this.Name = "Canvas";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Canvas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEyedrooper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
@@ -580,7 +583,7 @@ namespace Digital_Canvas
         private System.Windows.Forms.PictureBox btnBrush;
         private System.Windows.Forms.ToolStripMenuItem tabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox btnEyedrooper;
         private System.Windows.Forms.PictureBox bkgSelect;
         private System.Windows.Forms.Label lblBgkColour;
     }

@@ -331,7 +331,7 @@ namespace Digital_Canvas
             int widthDiffernce = 112;
             int heightDiffernce = 62;
             var openFile = new OpenFileDialog();
-         
+
             openFile.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             openFile.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
@@ -363,6 +363,11 @@ namespace Digital_Canvas
             {
                 g.Clear(colourBkg);
             }
+        }
+
+        private void btnEyedrooper_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
@@ -400,6 +405,17 @@ namespace Digital_Canvas
 
                 colourBkg = diag.Color;
                 eraser.Color = diag.Color;
+            }
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.B)
+            {
+                pencil = brush;
+                btnPencil.BackColor = System.Drawing.Color.Transparent;
+                btnBrush.BackColor = Color.LightGreen;
+                btnEraser.BackColor = System.Drawing.Color.Transparent;
+                btnFill.BackColor = System.Drawing.Color.Transparent;
             }
         }
     }
