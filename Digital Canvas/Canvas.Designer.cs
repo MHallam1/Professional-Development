@@ -553,12 +553,14 @@ namespace Digital_Canvas
             this.Controls.Add(this.colourPanel);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1919, 1076);
             this.MinimumSize = new System.Drawing.Size(599, 575);
             this.Name = "Canvas";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Canvas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Canvas_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
