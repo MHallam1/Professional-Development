@@ -34,7 +34,7 @@ namespace Digital_Canvas
             this.btnLine = new System.Windows.Forms.PictureBox();
             this.btnEllipse = new System.Windows.Forms.PictureBox();
             this.btnRect = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnEyedropper = new System.Windows.Forms.PictureBox();
             this.btnBrush = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEyedropper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
@@ -109,7 +109,7 @@ namespace Digital_Canvas
             this.splitContainer1.Panel1.Controls.Add(this.btnLine);
             this.splitContainer1.Panel1.Controls.Add(this.btnEllipse);
             this.splitContainer1.Panel1.Controls.Add(this.btnRect);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEyedropper);
             this.splitContainer1.Panel1.Controls.Add(this.btnBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
             this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
@@ -136,42 +136,49 @@ namespace Digital_Canvas
             // 
             // btnLine
             // 
+            this.btnLine.Image = ((System.Drawing.Image)(resources.GetObject("btnLine.Image")));
             this.btnLine.Location = new System.Drawing.Point(46, 137);
             this.btnLine.Name = "btnLine";
             this.btnLine.Size = new System.Drawing.Size(47, 47);
+            this.btnLine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnLine.TabIndex = 15;
             this.btnLine.TabStop = false;
             this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnEllipse
             // 
+            this.btnEllipse.Image = ((System.Drawing.Image)(resources.GetObject("btnEllipse.Image")));
             this.btnEllipse.Location = new System.Drawing.Point(-1, 137);
             this.btnEllipse.Name = "btnEllipse";
             this.btnEllipse.Size = new System.Drawing.Size(47, 47);
+            this.btnEllipse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEllipse.TabIndex = 14;
             this.btnEllipse.TabStop = false;
             this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
             // 
             // btnRect
             // 
+            this.btnRect.Image = ((System.Drawing.Image)(resources.GetObject("btnRect.Image")));
             this.btnRect.Location = new System.Drawing.Point(46, 93);
             this.btnRect.Name = "btnRect";
             this.btnRect.Size = new System.Drawing.Size(47, 47);
+            this.btnRect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRect.TabIndex = 13;
             this.btnRect.TabStop = false;
             this.btnRect.Click += new System.EventHandler(this.btnRect_Click);
             // 
-            // pictureBox3
+            // btnEyedropper
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(-1, 93);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.btnEyedropper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnEyedropper.Image = ((System.Drawing.Image)(resources.GetObject("btnEyedropper.Image")));
+            this.btnEyedropper.InitialImage = null;
+            this.btnEyedropper.Location = new System.Drawing.Point(-1, 93);
+            this.btnEyedropper.Name = "btnEyedropper";
+            this.btnEyedropper.Size = new System.Drawing.Size(47, 47);
+            this.btnEyedropper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEyedropper.TabIndex = 12;
+            this.btnEyedropper.TabStop = false;
+            this.btnEyedropper.Click += new System.EventHandler(this.btnEyedropper_Click);
             // 
             // btnBrush
             // 
@@ -560,7 +567,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEyedropper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
@@ -619,7 +626,7 @@ namespace Digital_Canvas
         private System.Windows.Forms.PictureBox btnBrush;
         private System.Windows.Forms.ToolStripMenuItem tabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox btnEyedropper;
         private System.Windows.Forms.PictureBox bkgSelect;
         private System.Windows.Forms.Label lblBgkColour;
         private System.Windows.Forms.PictureBox btnRect;
