@@ -238,7 +238,7 @@ namespace Digital_Canvas
             // bmap.Save(@"### PATH FROM A DRIVE###\bmp3.bmp");
             var saveDialogue = new SaveFileDialog();
             saveDialogue.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            saveDialogue.Filter = ".png|PNG|.jpg;.jpeg;.jpe|JPG|.tif;.tiff|TIFF|.gif|GIF|.bmp|BMP|" + "All Graphics Types|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
+            saveDialogue.Filter = ".png|PNG|.jpg;.jpeg;.jpe|JPG|.gif|GIF|.bmp|BMP| "  + "All Graphics Types|.*bmp;.*jpg;.*png;.*gif";
             saveDialogue.Title = "Save your file";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
@@ -329,6 +329,8 @@ namespace Digital_Canvas
         private void pNGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
+            saveDialogue.Filter = ".png|PNG|";
+            saveDialogue.Title = "Save your file as a png";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
@@ -342,6 +344,8 @@ namespace Digital_Canvas
         private void jPGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
+            saveDialogue.Filter = ".jpg;.jpeg;.jpe|JPG|";
+            saveDialogue.Title = "Save your file as a jpg";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
@@ -355,6 +359,8 @@ namespace Digital_Canvas
         private void bMPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
+            saveDialogue.Filter = ".bmp|BMP|";
+            saveDialogue.Title = "Save your file as a bitmap";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
@@ -366,9 +372,9 @@ namespace Digital_Canvas
         }
 
         private void gIFToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var saveDialogue = new SaveFileDialog();
-            //Show the file saving dialogue
+        {var saveDialogue = new SaveFileDialog();
+            saveDialogue.Filter = ".gif|GIF|";
+            saveDialogue.Title = "Save your file as a gif";
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -376,7 +382,7 @@ namespace Digital_Canvas
                 bmap.Save(".gif");
                 fileTypeDefaultSave = "gif";
             }
-        }
+         }
 
       
 
@@ -387,9 +393,9 @@ namespace Digital_Canvas
             var openFile = new OpenFileDialog();
 
             openFile.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            openFile.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            openFile.Filter = "Image files (.png, .jpg, .jpeg, .jpe, gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.gif; *.bmp";
 
-            openFile.Title = "Import an image";
+            openFile.Title = "Open a file";
             //Show the file saving dialogue
             DialogResult result = openFile.ShowDialog();
             // loads the bitmap and hen rsizes the canvas accordingly
@@ -480,7 +486,7 @@ namespace Digital_Canvas
             var imageDialogue = new OpenFileDialog();
 
             imageDialogue.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            imageDialogue.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *.tif, *.tiff, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            imageDialogue.Filter = "Image files (*.png,*.jpg, *.jpeg, *.jpe, *gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             imageDialogue.Title = "Import an image";
 
             //Show the file saving dialogue
@@ -557,6 +563,10 @@ namespace Digital_Canvas
             else if (e.Control == true && e.KeyCode == Keys.S)
             {
                 saveToolStripMenuItem1_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.I)
+            {
+                importToolStripMenuItem_Click(sender, e);
             }
         }
 
