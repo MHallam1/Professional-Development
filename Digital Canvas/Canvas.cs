@@ -209,16 +209,6 @@ namespace Digital_Canvas
             splitContainer1.Panel2.Cursor = Cursors.Default;
         }
 
-        private void fillButton_Click(object sender, EventArgs e)// customisation of the fill button
-        {
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = Color.LightGreen;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-        }
 
         private void sizebox_TextChanged(object sender, EventArgs e)// select the size of brush
         {
@@ -232,81 +222,12 @@ namespace Digital_Canvas
                 pencil.Width = size;
             }
         }
-
-        private void eraserButton_Click_1(object sender, EventArgs e) //code and customisation of erasser button
-        {
-            pencil = eraser;
-
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = Color.LightGreen;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-        }
-
-        private void pencilButton_Click_1(object sender, EventArgs e)// code for pencil button 
-        {
-            pencil = brush;
-
-            btnPencil.BackColor = Color.LightGreen;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-        }
-
-        private void btnRect_Click(object sender, EventArgs e)
-        {
-            pencil = rect;
-
-            btnRect.BackColor = Color.LightGreen;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-
-        }
-        private void btnEllipse_Click(object sender, EventArgs e)
-        {
-            pencil = ellipse;
-
-            btnEllipse.BackColor = Color.LightGreen;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-        }
         private void btnBrush_Click(object sender, EventArgs e)
         {
             pencil = brush;
 
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
+            refresh();
             btnBrush.BackColor = Color.LightGreen;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = System.Drawing.Color.Transparent;
-        }
-        private void btnLine_Click(object sender, EventArgs e)
-        {
-            pencil = line;
-
-            btnPencil.BackColor = System.Drawing.Color.Transparent;
-            btnBrush.BackColor = System.Drawing.Color.Transparent;
-            btnLine.BackColor = Color.LightGreen;
-            btnEraser.BackColor = System.Drawing.Color.Transparent;
-            btnFill.BackColor = System.Drawing.Color.Transparent;
-            btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnEllipse.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -484,13 +405,67 @@ namespace Digital_Canvas
             }
         }
 
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            pencil = line;
+
+            refresh();
+            btnLine.BackColor = Color.LightGreen;
+        }
+
+        private void btnEllipse_Click(object sender, EventArgs e)
+        {
+            pencil = ellipse;
+
+            refresh();
+            btnEllipse.BackColor = Color.LightGreen;
+        }
+
+        private void btnRect_Click(object sender, EventArgs e)
+        {
+            pencil = rect;
+
+            refresh();
+            btnRect.BackColor = Color.LightGreen;
+        }
+
+        private void btnEyedropper_Click(object sender, EventArgs e)
+        {
+
+
+            refresh();
+            btnEyedropper.BackColor = Color.LightGreen;
+        }
+
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Canvas tab = new Canvas();
             tab.ShowDialog();
         }
 
-      
+        private void btnPencil_Click(object sender, EventArgs e)
+        {
+            pencil = brush;
+
+            refresh();
+            btnPencil.BackColor = Color.LightGreen;
+        }
+
+        private void btnEraser_Click(object sender, EventArgs e)
+        {
+            pencil = eraser;
+
+            refresh();
+            btnEraser.BackColor = Color.LightGreen;
+        }
+
+        private void btnFill_Click(object sender, EventArgs e)
+        {
+            
+
+            refresh();
+            btnFill.BackColor = Color.LightGreen;
+        }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -539,14 +514,62 @@ namespace Digital_Canvas
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == (char)Keys.B)
+            if (e.Alt == true && e.KeyCode == Keys.P)
             {
-                pencil = brush;
-                btnPencil.BackColor = System.Drawing.Color.Transparent;
-                btnBrush.BackColor = Color.LightGreen;
-                btnEraser.BackColor = System.Drawing.Color.Transparent;
-                btnFill.BackColor = System.Drawing.Color.Transparent;
+                btnPencil_Click(sender, e);
             }
+            else if (e.Alt == true && e.KeyCode == Keys.B)
+            {
+                btnBrush_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.E)
+            {
+                btnEraser_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.F)
+            {
+                btnFill_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.I)
+            {
+                btnEyedropper_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.L)
+            {
+                btnLine_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.E)
+            {
+                btnEllipse_Click(sender, e);
+            }
+            else if (e.Alt == true && e.KeyCode == Keys.O)
+            {
+                btnRect_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.N)
+            {
+                saveToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.O)
+            {
+                openToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.S)
+            {
+                saveToolStripMenuItem1_Click(sender, e);
+            }
+        }
+
+        void refresh()
+        {
+            btnBrush.BackColor = System.Drawing.Color.Transparent;
+            btnEraser.BackColor = System.Drawing.Color.Transparent;
+            btnFill.BackColor = System.Drawing.Color.Transparent;
+            btnPencil.BackColor = System.Drawing.Color.Transparent;
+            btnEyedropper.BackColor = System.Drawing.Color.Transparent;
+            btnEllipse.BackColor = System.Drawing.Color.Transparent;
+            btnLine.BackColor = System.Drawing.Color.Transparent;
+            btnRect.BackColor = System.Drawing.Color.Transparent;
         }
     }
 }
