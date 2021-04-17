@@ -31,7 +31,6 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnBrush = new System.Windows.Forms.PictureBox();
             this.lblCanvasSize = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -77,7 +76,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).BeginInit();
@@ -100,7 +98,6 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel1.Controls.Add(this.btnBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lblCanvasSize);
             this.splitContainer1.Panel1.Controls.Add(this.lblWidth);
@@ -136,7 +133,6 @@ namespace Digital_Canvas
             this.btnEyedrooper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEyedrooper.TabIndex = 12;
             this.btnEyedrooper.TabStop = false;
-            this.btnEyedrooper.Click += new System.EventHandler(this.btnEyedrooper_Click);
             // 
             // btnBrush
             // 
@@ -524,7 +520,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEraser)).EndInit();
