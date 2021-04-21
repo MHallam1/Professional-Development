@@ -17,7 +17,6 @@ namespace Digital_Canvas
     public partial class Canvas : Form
     {
         //Reference to graphics object.
-        Graphics graphic;
         SaveFileDialog saveDialog = new SaveFileDialog();
         //This ensures that anything the mouse is doing doesn't effect the panel
         int cursorX = -1;
@@ -41,6 +40,9 @@ namespace Digital_Canvas
 
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
+        
+
+        //Flag for bucket tool
         
 
         public Canvas()
@@ -172,6 +174,36 @@ namespace Digital_Canvas
 
         }
 
+        
+        private void splitContainer1_Panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (fillSelected)
+            {
+                    Color fillColour = bmap.GetPixel(e.X, e.Y);
+                    if(fillColour.R != colour.R || fillColour.G != colour.G || fillColour.B != colour.B || fillColour.A != colour.A)
+                    {
+                        Point p = new Point(e.X, e.Y);
+                        Stack<Point> s = new Stack<Point>();
+                        List<Point> checkedPoints = new List<Point>();
+
+                        s.Push(p);
+                        while (s.Count > 0)
+                        {
+                            p = s.Pop();
+                            Color currentcolor = bmap.GetPixel(p.X, p.Y);
+                            if (currentcolor == fillColour)
+                            {
+                                bmap.SetPixel(p.X, p.Y, colour);
+                                if (p.X - 1 > 0) s.Push(new Point(p.X - 1, p.Y));
+                                if (p.X + 1 < bmap.Width) s.Push(new Point(p.X + 1, p.Y));
+                                if (p.Y - 1 > 0) s.Push(new Point(p.X, p.Y - 1));
+                                if (p.Y + 1 < bmap.Height) s.Push(new Point(p.X, p.Y + 1));
+                            }
+                        }
+                    }
+            }
+        }
+
         private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e) // occurs when mouse button is not being pressed (when you let go of it)
         {
             moving = false;
@@ -269,6 +301,11 @@ namespace Digital_Canvas
 
 
 
+        }
+
+        private static bool ColorMatch(Color a, Color b)
+        {
+            return (a.ToArgb() & 0xffffff) == (b.ToArgb() & 0xffffff);
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)//  this is the larger part of the split container 
@@ -465,13 +502,16 @@ namespace Digital_Canvas
             btnEraser.BackColor = Color.LightGreen;
         }
 
+
+        bool fillSelected;
         private void btnFill_Click(object sender, EventArgs e)
         {
-            
-
             refresh();
             btnFill.BackColor = Color.LightGreen;
+            fillSelected = true;
         }
+
+        
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -580,6 +620,8 @@ namespace Digital_Canvas
             btnEllipse.BackColor = System.Drawing.Color.Transparent;
             btnLine.BackColor = System.Drawing.Color.Transparent;
             btnRect.BackColor = System.Drawing.Color.Transparent;
+
+            fillSelected = false;
         }
     }
 }
