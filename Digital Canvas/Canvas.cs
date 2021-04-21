@@ -123,7 +123,7 @@ namespace Digital_Canvas
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
-                if (moving && cursorX != -1 && cursorY != -1)
+                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1)
                 {
                     if (pencil == rect)
                     {
@@ -175,9 +175,10 @@ namespace Digital_Canvas
         }
 
         
+        //This is called when the Canvas is clicked
         private void splitContainer1_Panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            if (fillSelected) //If the fill tool is selected
+            if (e.Button == MouseButtons.Left && fillSelected) //If the fill tool is selected and left click is pressed
             {
                     Color fillColour = bmap.GetPixel(e.X, e.Y); //Gets the colour of clicked pixel, to compare with neighbours, and their neighbours, and so on
 
