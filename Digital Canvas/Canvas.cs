@@ -86,6 +86,7 @@ namespace Digital_Canvas
         private void Canvas_Load(object sender, EventArgs e)//occurs when the application is run/code is run
         {
             Size = new Size(defaultWidth, defaultHeight); //Sets width and height of the application 
+
         }
 
         //Colour Box Code
@@ -516,7 +517,30 @@ namespace Digital_Canvas
             fillSelected = true;
         }
 
-        
+        private void splitContainer1_Panel2_DragDrop(object sender, DragEventArgs e)
+        {
+            int widthDiffernce = 112;
+            int heightDiffernce = 62;
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if(data!=null)
+            {
+                var fileName = data as string[];
+                if(fileName.Length>0)
+                {
+                    bmap = (Bitmap)Bitmap.FromFile(fileName[0]);
+                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
+                    Size = new Size(bmap.Width + widthDiffernce, bmap.Height + heightDiffernce);//give exact canvas size as required
+
+                    // bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
+                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+                }
+            }
+        }
+
+        private void splitContainer1_Panel2_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
