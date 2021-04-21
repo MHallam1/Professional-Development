@@ -123,7 +123,7 @@ namespace Digital_Canvas
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
-                if (moving && cursorX != -1 && cursorY != -1)
+                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
                 {
                     if (pencil == rect)
                     {
@@ -175,25 +175,30 @@ namespace Digital_Canvas
         }
 
         
+        //This is called when the Canvas is clicked
         private void splitContainer1_Panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            if (fillSelected)
+            if (e.Button == MouseButtons.Left && fillSelected) //If the fill tool is selected and left click is pressed
             {
-                    Color fillColour = bmap.GetPixel(e.X, e.Y);
-                    if(fillColour.R != colour.R || fillColour.G != colour.G || fillColour.B != colour.B || fillColour.A != colour.A)
-                    {
-                        Point p = new Point(e.X, e.Y);
-                        Stack<Point> s = new Stack<Point>();
-                        List<Point> checkedPoints = new List<Point>();
+                    Color fillColour = bmap.GetPixel(e.X, e.Y); //Gets the colour of clicked pixel, to compare with neighbours, and their neighbours, and so on
 
-                        s.Push(p);
-                        while (s.Count > 0)
+                    //We don't need to fill a selection that is already the same colour
+                    if(!fillColour.Equals(colour))
+                    {
+                        Point p = new Point(e.X, e.Y); //Selected pixel coordinate 
+                        Stack<Point> s = new Stack<Point>(); //Stack of pixel coordinates to check
+
+                        s.Push(p); //Push clicked pixel coordinate to stacks
+                        
+                        while (s.Count > 0) //While the stack contains elements
                         {
-                            p = s.Pop();
+                            p = s.Pop(); //Pop the last
                             Color currentcolor = bmap.GetPixel(p.X, p.Y);
-                            if (currentcolor == fillColour)
+                            if (currentcolor == fillColour) //If the colour of the pixel at that position is the same as the colour we are filling
                             {
-                                bmap.SetPixel(p.X, p.Y, colour);
+                                bmap.SetPixel(p.X, p.Y, colour); //Set it to the colour selected
+
+                                //Add neighbours to the stack, if statements check if the new point is within the canvas bounds
                                 if (p.X - 1 > 0) s.Push(new Point(p.X - 1, p.Y));
                                 if (p.X + 1 < bmap.Width) s.Push(new Point(p.X + 1, p.Y));
                                 if (p.Y - 1 > 0) s.Push(new Point(p.X, p.Y - 1));
