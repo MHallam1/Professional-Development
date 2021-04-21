@@ -123,7 +123,7 @@ namespace Digital_Canvas
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
-                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1)
+                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
                 {
                     if (pencil == rect)
                     {
