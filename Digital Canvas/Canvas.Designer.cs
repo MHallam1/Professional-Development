@@ -201,6 +201,8 @@ namespace Digital_Canvas
             this.btnBrush.TabIndex = 10;
             this.btnBrush.TabStop = false;
             this.btnBrush.Click += new System.EventHandler(this.btnBrush_Click);
+            this.btnBrush.MouseEnter += new System.EventHandler(this.btnBrush_MouseEnter);
+            this.btnBrush.MouseLeave += new System.EventHandler(this.btnBrush_MouseLeave);
             // 
             // lblCanvasSize
             // 
@@ -278,6 +280,8 @@ namespace Digital_Canvas
             this.btnEraser.TabIndex = 4;
             this.btnEraser.TabStop = false;
             this.btnEraser.Click += new System.EventHandler(this.btnEraser_Click);
+            this.btnEraser.MouseEnter += new System.EventHandler(this.btnEraser_MouseEnter);
+            this.btnEraser.MouseLeave += new System.EventHandler(this.btnEraser_MouseLeave);
             // 
             // btnPencil
             // 
@@ -291,6 +295,8 @@ namespace Digital_Canvas
             this.btnPencil.TabIndex = 3;
             this.btnPencil.TabStop = false;
             this.btnPencil.Click += new System.EventHandler(this.btnPencil_Click);
+            this.btnPencil.MouseEnter += new System.EventHandler(this.btnPencil_MouseEnter);
+            this.btnPencil.MouseLeave += new System.EventHandler(this.btnPencil_MouseLeave);
             // 
             // pictureBox1
             // 

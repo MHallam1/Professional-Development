@@ -38,6 +38,8 @@ namespace Digital_Canvas
         Bitmap bmap;
         String fileTypeDefaultSave = "bmp";
 
+        Color tempColour;
+
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
         
@@ -67,11 +69,9 @@ namespace Digital_Canvas
             eraser.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
             eraser.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
 
-            btnPencil.BackColor = Color.LightGreen;
             brush.Color = colour;
             eraser.Color = colourBkg;
             rect.Color = colour;
-            pencil = brush;
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
 
@@ -85,6 +85,9 @@ namespace Digital_Canvas
 
         private void Canvas_Load(object sender, EventArgs e)//occurs when the application is run/code is run
         {
+            refresh();
+            btnPencil_Click(sender, e);
+            btnPencil.BackColor= Color.LightGreen;
             Size = new Size(defaultWidth, defaultHeight); //Sets width and height of the application 
 
         }
@@ -265,7 +268,9 @@ namespace Digital_Canvas
             pencil = brush;
 
             refresh();
-            btnBrush.BackColor = Color.LightGreen;
+            btnBrush.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
+
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -497,7 +502,8 @@ namespace Digital_Canvas
             pencil = brush;
 
             refresh();
-            btnPencil.BackColor = Color.LightGreen;
+            btnPencil.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnEraser_Click(object sender, EventArgs e)
@@ -505,7 +511,8 @@ namespace Digital_Canvas
             pencil = eraser;
 
             refresh();
-            btnEraser.BackColor = Color.LightGreen;
+            btnEraser.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
 
@@ -542,6 +549,73 @@ namespace Digital_Canvas
             e.Effect = DragDropEffects.Copy;
         }
 
+        //hover
+
+        private void btnPencil_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnPencil.BackColor;
+            Color colour;
+            if (btnPencil.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnPencil.BackColor);
+            }
+
+            btnPencil.BackColor = colour;
+        }
+
+        private void btnPencil_MouseLeave(object sender, EventArgs e)
+        {
+            btnPencil.BackColor = tempColour;
+        }
+
+        private void btnBrush_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnBrush.BackColor;
+            Color colour;
+            if (btnBrush.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnBrush.BackColor);
+            }
+
+            btnBrush.BackColor = colour;
+        }
+
+        private void btnBrush_MouseLeave(object sender, EventArgs e)
+        {
+            btnBrush.BackColor = tempColour;
+        }
+
+        private void btnEraser_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEraser.BackColor;
+            Color colour;
+            if (btnEraser.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEraser.BackColor);
+            }
+
+            btnEraser.BackColor = colour;
+        }
+
+        private void btnEraser_MouseLeave(object sender, EventArgs e)
+        {
+            btnEraser.BackColor = tempColour;
+        }
+
+        //file save
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
@@ -550,6 +624,7 @@ namespace Digital_Canvas
             }
         }
 
+        //file import
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var imageDialogue = new OpenFileDialog();
@@ -638,6 +713,54 @@ namespace Digital_Canvas
                 importToolStripMenuItem_Click(sender, e);
             }
         }
+
+
+
+
+
+        //methods
+
+        Color SetHue(Color oldColor)
+        {
+            var temp = new HSV();
+            float hue = oldColor.GetHue();
+            temp.h = hue - 15;
+            temp.s = oldColor.GetSaturation();
+            temp.v = getBrightness(oldColor);
+            return ColorFromHSL(temp);
+        }
+
+        float getBrightness(Color c)
+        { return (c.R * 0.299f + c.G * 0.587f + c.B * 0.114f) / 256f; }
+
+        static public Color ColorFromHSL(HSV hsl)
+        {
+            if (hsl.s == 0)
+            { int L = (int)hsl.v; return Color.FromArgb(255, L, L, L); }
+
+            double min, max, h;
+            h = hsl.h / 360d;
+
+            max = hsl.v < 0.5d ? hsl.v * (1 + hsl.s) : (hsl.v + hsl.s) - (hsl.v * hsl.s);
+            min = (hsl.v * 2d) - max;
+
+            Color c = Color.FromArgb(255, (int)(255 * RGBChannelFromHue(min, max, h + 1 / 3d)),
+                                          (int)(255 * RGBChannelFromHue(min, max, h)),
+                                          (int)(255 * RGBChannelFromHue(min, max, h - 1 / 3d)));
+            return c;
+        }
+
+        static double RGBChannelFromHue(double m1, double m2, double h)
+        {
+            h = (h + 1d) % 1d;
+            if (h < 0) h += 1;
+            if (h * 6 < 1) return m1 + (m2 - m1) * 6 * h;
+            else if (h * 2 < 1) return m2;
+            else if (h * 3 < 2) return m1 + (m2 - m1) * 6 * (2d / 3d - h);
+            else return m1;
+
+        }
+        public struct HSV { public float h; public float s; public float v; }
 
         void refresh()
         {
