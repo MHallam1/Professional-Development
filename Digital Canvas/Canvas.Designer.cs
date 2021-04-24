@@ -150,6 +150,8 @@ namespace Digital_Canvas
             this.btnRect.TabIndex = 14;
             this.btnRect.TabStop = false;
             this.btnRect.Click += new System.EventHandler(this.btnRect_Click);
+            this.btnRect.MouseEnter += new System.EventHandler(this.btnRect_MouseEnter);
+            this.btnRect.MouseLeave += new System.EventHandler(this.btnRect_MouseLeave);
             // 
             // btnEllipse
             // 
@@ -163,6 +165,8 @@ namespace Digital_Canvas
             this.btnEllipse.TabIndex = 13;
             this.btnEllipse.TabStop = false;
             this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
+            this.btnEllipse.MouseEnter += new System.EventHandler(this.btnEllipse_MouseEnter);
+            this.btnEllipse.MouseLeave += new System.EventHandler(this.btnEllipse_MouseLeave);
             // 
             // btnLine
             // 
@@ -176,6 +180,8 @@ namespace Digital_Canvas
             this.btnLine.TabIndex = 12;
             this.btnLine.TabStop = false;
             this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
+            this.btnLine.MouseEnter += new System.EventHandler(this.btnLine_MouseEnter);
+            this.btnLine.MouseLeave += new System.EventHandler(this.btnLine_MouseLeave);
             // 
             // btnEyedropper
             // 
@@ -189,6 +195,8 @@ namespace Digital_Canvas
             this.btnEyedropper.TabIndex = 11;
             this.btnEyedropper.TabStop = false;
             this.btnEyedropper.Click += new System.EventHandler(this.btnEyedropper_Click);
+            this.btnEyedropper.MouseEnter += new System.EventHandler(this.btnEyedropper_MouseEnter);
+            this.btnEyedropper.MouseLeave += new System.EventHandler(this.btnEyedropper_MouseLeave);
             // 
             // btnBrush
             // 
@@ -267,6 +275,8 @@ namespace Digital_Canvas
             this.btnFill.TabIndex = 3;
             this.btnFill.TabStop = false;
             this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
+            this.btnFill.MouseEnter += new System.EventHandler(this.btnFill_MouseEnter);
+            this.btnFill.MouseLeave += new System.EventHandler(this.btnFill_MouseLeave);
             // 
             // btnEraser
             // 

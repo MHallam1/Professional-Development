@@ -464,7 +464,8 @@ namespace Digital_Canvas
             pencil = line;
 
             refresh();
-            btnLine.BackColor = Color.LightGreen;
+            btnLine.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnEllipse_Click(object sender, EventArgs e)
@@ -472,7 +473,8 @@ namespace Digital_Canvas
             pencil = ellipse;
 
             refresh();
-            btnEllipse.BackColor = Color.LightGreen;
+            btnEllipse.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnRect_Click(object sender, EventArgs e)
@@ -480,7 +482,8 @@ namespace Digital_Canvas
             pencil = rect;
 
             refresh();
-            btnRect.BackColor = Color.LightGreen;
+            btnRect.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnEyedropper_Click(object sender, EventArgs e)
@@ -488,7 +491,8 @@ namespace Digital_Canvas
 
 
             refresh();
-            btnEyedropper.BackColor = Color.LightGreen;
+            btnEyedropper.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -520,7 +524,8 @@ namespace Digital_Canvas
         private void btnFill_Click(object sender, EventArgs e)
         {
             refresh();
-            btnFill.BackColor = Color.LightGreen;
+            btnFill.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
             fillSelected = true;
         }
 
@@ -728,6 +733,111 @@ namespace Digital_Canvas
             temp.s = oldColor.GetSaturation();
             temp.v = getBrightness(oldColor);
             return ColorFromHSL(temp);
+        }
+
+        private void btnFill_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnFill.BackColor;
+            Color colour;
+            if (btnFill.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnFill.BackColor);
+            }
+
+            btnFill.BackColor = colour;
+        }
+
+        private void btnFill_MouseLeave(object sender, EventArgs e)
+        {
+            btnFill.BackColor = tempColour;
+        }
+
+        private void btnEyedropper_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEyedropper.BackColor;
+            Color colour;
+            if (btnEyedropper.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEyedropper.BackColor);
+            }
+
+            btnEyedropper.BackColor = colour;
+        }
+
+        private void btnEyedropper_MouseLeave(object sender, EventArgs e)
+        {
+            btnEyedropper.BackColor = tempColour;
+        }
+
+        private void btnLine_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnLine.BackColor;
+            Color colour;
+            if (btnLine.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnLine.BackColor);
+            }
+
+            btnLine.BackColor = colour;
+        }
+
+        private void btnLine_MouseLeave(object sender, EventArgs e)
+        {
+            btnLine.BackColor = tempColour;
+        }
+
+        private void btnEllipse_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEllipse.BackColor;
+            Color colour;
+            if (btnEllipse.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEllipse.BackColor);
+            }
+
+            btnEllipse.BackColor = colour;
+        }
+
+        private void btnEllipse_MouseLeave(object sender, EventArgs e)
+        {
+            btnEllipse.BackColor = tempColour;
+        }
+
+        private void btnRect_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnRect.BackColor;
+            Color colour;
+            if (btnRect.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnRect.BackColor);
+            }
+
+            btnRect.BackColor = colour;
+        }
+
+        private void btnRect_MouseLeave(object sender, EventArgs e)
+        {
+            btnRect.BackColor = tempColour;
         }
 
         float getBrightness(Color c)
