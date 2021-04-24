@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -125,12 +126,14 @@ namespace Digital_Canvas
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is moved but will only run if mouse button is down due to boolean flag
         {
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
+            lblcoordinates.Text = "X: " + e.X + " Y: " + e.Y;
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
                 if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
                 {
                     if (pencil == rect)
                     {
+
                         SolidBrush sb = new SolidBrush(colourBkg);
                         //SolidBrush sb2 = new SolidBrush(Color.Blue);
                         //Pen pencil2 = new Pen(Color.Red);
@@ -162,8 +165,20 @@ namespace Digital_Canvas
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(cursorX, e.Y));
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(e.X, cursorY));
                     }
+                    else if (pencil == brush)
+                    {
+                        
+                        LinearGradientBrush lgBrush = new LinearGradientBrush(new Rectangle(10, 10, 5, 5), colourBkg, colour, 5.0f);
+                        Pen gradientBrush = new Pen(lgBrush, size);
+                        gradientBrush.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        gradientBrush.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                        g.DrawLine(gradientBrush, new Point(cursorX, cursorY), e.Location);
+                        cursorX = e.X;
+                        cursorY = e.Y;
+                    }
                     else
                     {
+                        
                         g.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
                         //update the cursorX and cursorY to draw as intended
                         cursorX = e.X;
@@ -503,7 +518,9 @@ namespace Digital_Canvas
 
         private void btnPencil_Click(object sender, EventArgs e)
         {
-            pencil = brush;
+            
+
+            pencil = pencil;
 
             refresh();
             btnPencil.BackColor = SetHue(Color.LightGreen);
@@ -838,6 +855,17 @@ namespace Digital_Canvas
         private void btnRect_MouseLeave(object sender, EventArgs e)
         {
             btnRect.BackColor = tempColour;
+        }
+
+        private void btnRotateLeft_Click(object sender, EventArgs e)
+        {
+            bmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            
+        }
+
+        private void btnRotateRight_Click(object sender, EventArgs e)
+        {
+            bmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
 
         float getBrightness(Color c)
