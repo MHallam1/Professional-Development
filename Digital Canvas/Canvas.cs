@@ -697,7 +697,7 @@ namespace Digital_Canvas
             {
                 btnEllipse_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.O)
+            else if (e.Alt == true && e.KeyCode == Keys.R)
             {
                 btnRect_Click(sender, e);
             }
