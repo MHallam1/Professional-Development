@@ -840,6 +840,11 @@ namespace Digital_Canvas
             btnRect.BackColor = tempColour;
         }
 
+        private void btnText_Click(object sender, EventArgs e)
+        {
+
+        }
+
         float getBrightness(Color c)
         { return (c.R * 0.299f + c.G * 0.587f + c.B * 0.114f) / 256f; }
 

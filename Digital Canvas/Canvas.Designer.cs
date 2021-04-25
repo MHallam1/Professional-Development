@@ -76,6 +76,7 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
+            this.btnText = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +94,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.bkgSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -106,6 +108,7 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.btnText);
             this.splitContainer1.Panel1.Controls.Add(this.btnRect);
             this.splitContainer1.Panel1.Controls.Add(this.btnEllipse);
             this.splitContainer1.Panel1.Controls.Add(this.btnLine);
@@ -397,21 +400,21 @@ namespace Digital_Canvas
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -423,7 +426,7 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
@@ -457,7 +460,7 @@ namespace Digital_Canvas
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import Image";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
@@ -476,31 +479,31 @@ namespace Digital_Canvas
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // customizeToolStripMenuItem
@@ -515,7 +518,7 @@ namespace Digital_Canvas
             // keyboardShortcutsToolStripMenuItem
             // 
             this.keyboardShortcutsToolStripMenuItem.Name = "keyboardShortcutsToolStripMenuItem";
-            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.keyboardShortcutsToolStripMenuItem.Text = "Keyboard Shortcuts";
             // 
             // canvasToolStripMenuItem
@@ -523,13 +526,13 @@ namespace Digital_Canvas
             this.canvasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resizeCanvasToolStripMenuItem});
             this.canvasToolStripMenuItem.Name = "canvasToolStripMenuItem";
-            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.canvasToolStripMenuItem.Text = "Canvas";
             // 
             // resizeCanvasToolStripMenuItem
             // 
             this.resizeCanvasToolStripMenuItem.Name = "resizeCanvasToolStripMenuItem";
-            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resizeCanvasToolStripMenuItem.Text = "Default Size";
             this.resizeCanvasToolStripMenuItem.Click += new System.EventHandler(this.resizeCanvasToolStripMenuItem_Click);
             // 
@@ -544,7 +547,7 @@ namespace Digital_Canvas
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -567,6 +570,19 @@ namespace Digital_Canvas
             this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
+            // 
+            // btnText
+            // 
+            this.btnText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnText.Image = ((System.Drawing.Image)(resources.GetObject("btnText.Image")));
+            this.btnText.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnText.InitialImage")));
+            this.btnText.Location = new System.Drawing.Point(1, 186);
+            this.btnText.Name = "btnText";
+            this.btnText.Size = new System.Drawing.Size(47, 47);
+            this.btnText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnText.TabIndex = 15;
+            this.btnText.TabStop = false;
+            this.btnText.Click += new System.EventHandler(this.btnText_Click);
             // 
             // Canvas
             // 
@@ -607,6 +623,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,5 +676,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.PictureBox btnEllipse;
         private System.Windows.Forms.PictureBox btnLine;
         private System.Windows.Forms.PictureBox btnEyedropper;
+        private System.Windows.Forms.PictureBox btnText;
     }
 }
