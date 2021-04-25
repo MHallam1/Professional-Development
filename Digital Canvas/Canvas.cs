@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -33,7 +32,7 @@ namespace Digital_Canvas
         Color colour = Color.Black; //Pen starting colour
         Color colourBkg = Color.White; //Background colour used in panel
         int size = 10; //Pen starting size
-        Pen pencil, brush, eraser, rect,ellipse,line, originalPen;
+        Pen pencil, brush, eraser, rect,ellipse,line;
 
         ColorDialog diag;
         Bitmap bmap;
@@ -54,7 +53,7 @@ namespace Digital_Canvas
             InitializeComponent(); //Runs the form
 
             txtSizebox.Text = size.ToString(); //Takes the default text and converts it to string to display in textbox
-            originalPen = new Pen(colour, size);
+
             pencil = new Pen(colour, size);
             brush = new Pen(colour, size);
             eraser = new Pen(colour, size);
@@ -126,14 +125,12 @@ namespace Digital_Canvas
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is moved but will only run if mouse button is down due to boolean flag
         {
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
-            lblcoordinates.Text = "X: " + e.X + " Y: " + e.Y;
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
                 if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
                 {
-                    if (originalPen == rect)
+                    if (pencil == rect)
                     {
-
                         SolidBrush sb = new SolidBrush(colourBkg);
                         //SolidBrush sb2 = new SolidBrush(Color.Blue);
                         //Pen pencil2 = new Pen(Color.Red);
@@ -143,7 +140,7 @@ namespace Digital_Canvas
                         g.FillRectangle(sb, new Rectangle(cursorX, cursorY, e.X - shapeX, e.Y - shapeY));
                        // g.DrawRectangle(pencil2, new Rectangle(cursorX - size, cursorY - size, e.X - shapeX + size, e.Y - shapeY + size));
                     }
-                    else if(originalPen == ellipse)
+                    else if(pencil == ellipse)
                     {
                         // SolidBrush sb = new SolidBrush(colourBkg);
 
@@ -157,7 +154,7 @@ namespace Digital_Canvas
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(e.X, cursorY));
 
                     }
-                    else if (originalPen == line)
+                    else if (pencil == line)
                     {
                         Pen guidePen = new Pen(colour, 1);
                         guidePen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
@@ -165,26 +162,8 @@ namespace Digital_Canvas
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(cursorX, e.Y));
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(e.X, cursorY));
                     }
-                    else if (originalPen == brush)
-                    {
-                        
-                        LinearGradientBrush lgBrush = new LinearGradientBrush(new Rectangle(10, 10, 5, 5), colourBkg, colour, 5.0f);
-                        Pen gradientBrush = new Pen(lgBrush, size);
-                        gradientBrush.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                        gradientBrush.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-                        g.DrawLine(gradientBrush, new Point(cursorX, cursorY), e.Location);
-                        cursorX = e.X;
-                        cursorY = e.Y;
-                    }
-                    else if (originalPen == eraser)
-                    {
-                        g.DrawLine(eraser, new Point(cursorX, cursorY), e.Location);
-                        cursorX = e.X;
-                        cursorY = e.Y;
-                    }
                     else
                     {
-                        
                         g.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
                         //update the cursorX and cursorY to draw as intended
                         cursorX = e.X;
@@ -239,7 +218,7 @@ namespace Digital_Canvas
             moving = false;
             using (Graphics g = Graphics.FromImage(bmap))
             {
-                if (originalPen == ellipse)
+                if (pencil == ellipse)
                 {
                     //removing the trace lines that helped see how big ellipse is
                     Pen guidePen = new Pen(colourBkg, 4);
@@ -253,7 +232,7 @@ namespace Digital_Canvas
                     //g.DrawEllipse(pencil, new RectangleF( x, y, e.X - shapeX, e.Y - shapeY));
                     g.FillEllipse(sb, new Rectangle(cursorX, cursorY, e.X - shapeX, e.Y - shapeY));
                 }
-                else if (originalPen == line)
+                else if ( pencil == line)
                 {
                     Pen guidePen = new Pen(colourBkg, 4);
                     guidePen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
@@ -262,7 +241,7 @@ namespace Digital_Canvas
                     g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(e.X, cursorY));
 
 
-                    g.DrawLine(originalPen, new Point(cursorX, cursorY), new Point(e.X, e.Y));
+                    g.DrawLine(pencil, new Point(cursorX, cursorY), new Point(e.X, e.Y));
                 }
             }
             splitContainer1.Panel2.Invalidate();
@@ -286,7 +265,7 @@ namespace Digital_Canvas
         }
         private void btnBrush_Click(object sender, EventArgs e)
         {
-            originalPen = brush;
+            pencil = brush;
 
             refresh();
             btnBrush.BackColor = SetHue(Color.LightGreen);
@@ -482,7 +461,7 @@ namespace Digital_Canvas
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-            originalPen = line;
+            pencil = line;
 
             refresh();
             btnLine.BackColor = SetHue(Color.LightGreen);
@@ -491,7 +470,7 @@ namespace Digital_Canvas
 
         private void btnEllipse_Click(object sender, EventArgs e)
         {
-            originalPen = ellipse;
+            pencil = ellipse;
 
             refresh();
             btnEllipse.BackColor = SetHue(Color.LightGreen);
@@ -500,7 +479,7 @@ namespace Digital_Canvas
 
         private void btnRect_Click(object sender, EventArgs e)
         {
-            originalPen = rect;
+            pencil = rect;
 
             refresh();
             btnRect.BackColor = SetHue(Color.LightGreen);
@@ -524,9 +503,7 @@ namespace Digital_Canvas
 
         private void btnPencil_Click(object sender, EventArgs e)
         {
-
-
-            originalPen = pencil;
+            pencil = brush;
 
             refresh();
             btnPencil.BackColor = SetHue(Color.LightGreen);
@@ -535,7 +512,7 @@ namespace Digital_Canvas
 
         private void btnEraser_Click(object sender, EventArgs e)
         {
-            originalPen = eraser;
+            pencil = eraser;
 
             refresh();
             btnEraser.BackColor = SetHue(Color.LightGreen);
@@ -863,15 +840,9 @@ namespace Digital_Canvas
             btnRect.BackColor = tempColour;
         }
 
-        private void btnRotateLeft_Click(object sender, EventArgs e)
+        private void btnText_Click(object sender, EventArgs e)
         {
-            bmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            
-        }
 
-        private void btnRotateRight_Click(object sender, EventArgs e)
-        {
-            bmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
 
         float getBrightness(Color c)

@@ -76,9 +76,7 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.lblcoordinates = new System.Windows.Forms.Label();
-            this.btnRotateLeft = new System.Windows.Forms.Button();
-            this.btnRotateRight = new System.Windows.Forms.Button();
+            this.btnText = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +94,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.bkgSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -109,9 +108,7 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.btnRotateRight);
-            this.splitContainer1.Panel1.Controls.Add(this.btnRotateLeft);
-            this.splitContainer1.Panel1.Controls.Add(this.lblcoordinates);
+            this.splitContainer1.Panel1.Controls.Add(this.btnText);
             this.splitContainer1.Panel1.Controls.Add(this.btnRect);
             this.splitContainer1.Panel1.Controls.Add(this.btnEllipse);
             this.splitContainer1.Panel1.Controls.Add(this.btnLine);
@@ -574,35 +571,18 @@ namespace Digital_Canvas
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
             // 
-            // lblcoordinates
+            // btnText
             // 
-            this.lblcoordinates.AutoSize = true;
-            this.lblcoordinates.Location = new System.Drawing.Point(22, 376);
-            this.lblcoordinates.Name = "lblcoordinates";
-            this.lblcoordinates.Size = new System.Drawing.Size(63, 13);
-            this.lblcoordinates.TabIndex = 15;
-            this.lblcoordinates.Text = "Coordinates";
-            // 
-            // btnRotateLeft
-            // 
-            this.btnRotateLeft.Location = new System.Drawing.Point(4, 230);
-            this.btnRotateLeft.Name = "btnRotateLeft";
-            this.btnRotateLeft.Size = new System.Drawing.Size(89, 24);
-            this.btnRotateLeft.TabIndex = 16;
-            this.btnRotateLeft.Text = "Rotate 90 left";
-            this.btnRotateLeft.UseVisualStyleBackColor = true;
-            this.btnRotateLeft.Click += new System.EventHandler(this.btnRotateLeft_Click);
-            // 
-            // btnRotateRight
-            // 
-            this.btnRotateRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateRight.Location = new System.Drawing.Point(4, 260);
-            this.btnRotateRight.Name = "btnRotateRight";
-            this.btnRotateRight.Size = new System.Drawing.Size(89, 24);
-            this.btnRotateRight.TabIndex = 17;
-            this.btnRotateRight.Text = "Rotate 90 right";
-            this.btnRotateRight.UseVisualStyleBackColor = true;
-            this.btnRotateRight.Click += new System.EventHandler(this.btnRotateRight_Click);
+            this.btnText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnText.Image = ((System.Drawing.Image)(resources.GetObject("btnText.Image")));
+            this.btnText.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnText.InitialImage")));
+            this.btnText.Location = new System.Drawing.Point(1, 186);
+            this.btnText.Name = "btnText";
+            this.btnText.Size = new System.Drawing.Size(47, 47);
+            this.btnText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnText.TabIndex = 15;
+            this.btnText.TabStop = false;
+            this.btnText.Click += new System.EventHandler(this.btnText_Click);
             // 
             // Canvas
             // 
@@ -643,6 +623,7 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,8 +676,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.PictureBox btnEllipse;
         private System.Windows.Forms.PictureBox btnLine;
         private System.Windows.Forms.PictureBox btnEyedropper;
-        private System.Windows.Forms.Label lblcoordinates;
-        private System.Windows.Forms.Button btnRotateRight;
-        private System.Windows.Forms.Button btnRotateLeft;
+        private System.Windows.Forms.PictureBox btnText;
     }
 }
