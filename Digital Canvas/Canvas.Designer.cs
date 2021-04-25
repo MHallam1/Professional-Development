@@ -31,6 +31,9 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnRotateRight = new System.Windows.Forms.Button();
+            this.btnRotateLeft = new System.Windows.Forms.Button();
+            this.lblcoordinates = new System.Windows.Forms.Label();
             this.btnRect = new System.Windows.Forms.PictureBox();
             this.btnEllipse = new System.Windows.Forms.PictureBox();
             this.btnLine = new System.Windows.Forms.PictureBox();
@@ -76,9 +79,6 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.lblcoordinates = new System.Windows.Forms.Label();
-            this.btnRotateLeft = new System.Windows.Forms.Button();
-            this.btnRotateRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -143,6 +143,36 @@ namespace Digital_Canvas
             this.splitContainer1.Size = new System.Drawing.Size(787, 538);
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnRotateRight
+            // 
+            this.btnRotateRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRotateRight.Location = new System.Drawing.Point(4, 260);
+            this.btnRotateRight.Name = "btnRotateRight";
+            this.btnRotateRight.Size = new System.Drawing.Size(89, 24);
+            this.btnRotateRight.TabIndex = 17;
+            this.btnRotateRight.Text = "Rotate 90 right";
+            this.btnRotateRight.UseVisualStyleBackColor = true;
+            this.btnRotateRight.Click += new System.EventHandler(this.btnRotateRight_Click);
+            // 
+            // btnRotateLeft
+            // 
+            this.btnRotateLeft.Location = new System.Drawing.Point(4, 230);
+            this.btnRotateLeft.Name = "btnRotateLeft";
+            this.btnRotateLeft.Size = new System.Drawing.Size(89, 24);
+            this.btnRotateLeft.TabIndex = 16;
+            this.btnRotateLeft.Text = "Rotate 90 left";
+            this.btnRotateLeft.UseVisualStyleBackColor = true;
+            this.btnRotateLeft.Click += new System.EventHandler(this.btnRotateLeft_Click);
+            // 
+            // lblcoordinates
+            // 
+            this.lblcoordinates.AutoSize = true;
+            this.lblcoordinates.Location = new System.Drawing.Point(22, 376);
+            this.lblcoordinates.Name = "lblcoordinates";
+            this.lblcoordinates.Size = new System.Drawing.Size(63, 13);
+            this.lblcoordinates.TabIndex = 15;
+            this.lblcoordinates.Text = "Coordinates";
             // 
             // btnRect
             // 
@@ -403,21 +433,21 @@ namespace Digital_Canvas
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -429,7 +459,7 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
@@ -463,7 +493,7 @@ namespace Digital_Canvas
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.importToolStripMenuItem.Text = "Import Image";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
@@ -482,31 +512,31 @@ namespace Digital_Canvas
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // customizeToolStripMenuItem
@@ -521,7 +551,7 @@ namespace Digital_Canvas
             // keyboardShortcutsToolStripMenuItem
             // 
             this.keyboardShortcutsToolStripMenuItem.Name = "keyboardShortcutsToolStripMenuItem";
-            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.keyboardShortcutsToolStripMenuItem.Text = "Keyboard Shortcuts";
             // 
             // canvasToolStripMenuItem
@@ -529,13 +559,13 @@ namespace Digital_Canvas
             this.canvasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resizeCanvasToolStripMenuItem});
             this.canvasToolStripMenuItem.Name = "canvasToolStripMenuItem";
-            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.canvasToolStripMenuItem.Text = "Canvas";
             // 
             // resizeCanvasToolStripMenuItem
             // 
             this.resizeCanvasToolStripMenuItem.Name = "resizeCanvasToolStripMenuItem";
-            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.resizeCanvasToolStripMenuItem.Text = "Default Size";
             this.resizeCanvasToolStripMenuItem.Click += new System.EventHandler(this.resizeCanvasToolStripMenuItem_Click);
             // 
@@ -550,7 +580,7 @@ namespace Digital_Canvas
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -573,36 +603,6 @@ namespace Digital_Canvas
             this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
-            // 
-            // lblcoordinates
-            // 
-            this.lblcoordinates.AutoSize = true;
-            this.lblcoordinates.Location = new System.Drawing.Point(22, 376);
-            this.lblcoordinates.Name = "lblcoordinates";
-            this.lblcoordinates.Size = new System.Drawing.Size(63, 13);
-            this.lblcoordinates.TabIndex = 15;
-            this.lblcoordinates.Text = "Coordinates";
-            // 
-            // btnRotateLeft
-            // 
-            this.btnRotateLeft.Location = new System.Drawing.Point(4, 230);
-            this.btnRotateLeft.Name = "btnRotateLeft";
-            this.btnRotateLeft.Size = new System.Drawing.Size(89, 24);
-            this.btnRotateLeft.TabIndex = 16;
-            this.btnRotateLeft.Text = "Rotate 90 left";
-            this.btnRotateLeft.UseVisualStyleBackColor = true;
-            this.btnRotateLeft.Click += new System.EventHandler(this.btnRotateLeft_Click);
-            // 
-            // btnRotateRight
-            // 
-            this.btnRotateRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateRight.Location = new System.Drawing.Point(4, 260);
-            this.btnRotateRight.Name = "btnRotateRight";
-            this.btnRotateRight.Size = new System.Drawing.Size(89, 24);
-            this.btnRotateRight.TabIndex = 17;
-            this.btnRotateRight.Text = "Rotate 90 right";
-            this.btnRotateRight.UseVisualStyleBackColor = true;
-            this.btnRotateRight.Click += new System.EventHandler(this.btnRotateRight_Click);
             // 
             // Canvas
             // 
