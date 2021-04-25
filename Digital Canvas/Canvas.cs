@@ -139,12 +139,12 @@ namespace Digital_Canvas
                         //SolidBrush sb2 = new SolidBrush(Color.Blue);
                         //Pen pencil2 = new Pen(Color.Red);
 
-                        g.DrawRectangle(pencil, new Rectangle(cursorX, cursorY, e.X- shapeX,e.Y-shapeY));
+                        g.DrawRectangle(pencil, new Rectangle(cursorX, cursorY, e.X - shapeX, e.Y - shapeY));
                         //g.FillRectangle(sb2, new Rectangle(cursorX-size, cursorY-size, e.X - shapeX+size, e.Y - shapeY+size));
                         g.FillRectangle(sb, new Rectangle(cursorX, cursorY, e.X - shapeX, e.Y - shapeY));
-                       // g.DrawRectangle(pencil2, new Rectangle(cursorX - size, cursorY - size, e.X - shapeX + size, e.Y - shapeY + size));
+                        // g.DrawRectangle(pencil2, new Rectangle(cursorX - size, cursorY - size, e.X - shapeX + size, e.Y - shapeY + size));
                     }
-                    else if(originalPen == ellipse)
+                    else if (originalPen == ellipse)
                     {
                         // SolidBrush sb = new SolidBrush(colourBkg);
 
@@ -168,7 +168,7 @@ namespace Digital_Canvas
                     }
                     else if (originalPen == brush)
                     {
-                        
+
                         LinearGradientBrush lgBrush = new LinearGradientBrush(new Rectangle(10, 10, 5, 5), colourBkg, colour, 5.0f);
                         Pen gradientBrush = new Pen(lgBrush, size);
                         gradientBrush.EndCap = System.Drawing.Drawing2D.LineCap.Round;
@@ -177,9 +177,16 @@ namespace Digital_Canvas
                         cursorX = e.X;
                         cursorY = e.Y;
                     }
+                    else if (originalPen == eraser)
+                    {
+                        g.DrawLine(eraser, new Point(cursorX, cursorY), e.Location);
+                        //update the cursorX and cursorY to draw as intended
+                        cursorX = e.X;
+                        cursorY = e.Y;
+                    }
                     else
                     {
-                        
+
                         g.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
                         //update the cursorX and cursorY to draw as intended
                         cursorX = e.X;
