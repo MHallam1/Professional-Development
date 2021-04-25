@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -38,6 +39,8 @@ namespace Digital_Canvas
         Bitmap bmap;
         String fileTypeDefaultSave = "bmp";
 
+        Color tempColour;
+
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
         
@@ -67,11 +70,9 @@ namespace Digital_Canvas
             eraser.StartCap = System.Drawing.Drawing2D.LineCap.Round; // makes the start of line rounded
             eraser.EndCap = System.Drawing.Drawing2D.LineCap.Round; //makes the end of the line rounded
 
-            btnPencil.BackColor = Color.LightGreen;
             brush.Color = colour;
             eraser.Color = colourBkg;
             rect.Color = colour;
-            pencil = brush;
 
             bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
 
@@ -85,7 +86,11 @@ namespace Digital_Canvas
 
         private void Canvas_Load(object sender, EventArgs e)//occurs when the application is run/code is run
         {
+            refresh();
+            btnPencil_Click(sender, e);
+            btnPencil.BackColor= Color.LightGreen;
             Size = new Size(defaultWidth, defaultHeight); //Sets width and height of the application 
+
         }
 
         //Colour Box Code
@@ -121,12 +126,14 @@ namespace Digital_Canvas
         private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is moved but will only run if mouse button is down due to boolean flag
         {
             // use this the line below when needed to do something with Graphics , This will use e.graphics which is much appropriate
+            lblcoordinates.Text = "X: " + e.X + " Y: " + e.Y;
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
-                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected && !eyedropSelected)
+                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
                 {
                     if (pencil == rect)
                     {
+
                         SolidBrush sb = new SolidBrush(colourBkg);
                         //SolidBrush sb2 = new SolidBrush(Color.Blue);
                         //Pen pencil2 = new Pen(Color.Red);
@@ -158,8 +165,20 @@ namespace Digital_Canvas
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(cursorX, e.Y));
                         g.DrawLine(guidePen, new Point(cursorX, cursorY), new Point(e.X, cursorY));
                     }
+                    else if (pencil == brush)
+                    {
+                        
+                        LinearGradientBrush lgBrush = new LinearGradientBrush(new Rectangle(10, 10, 5, 5), colourBkg, colour, 5.0f);
+                        Pen gradientBrush = new Pen(lgBrush, size);
+                        gradientBrush.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        gradientBrush.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                        g.DrawLine(gradientBrush, new Point(cursorX, cursorY), e.Location);
+                        cursorX = e.X;
+                        cursorY = e.Y;
+                    }
                     else
                     {
+                        
                         g.DrawLine(pencil, new Point(cursorX, cursorY), e.Location);
                         //update the cursorX and cursorY to draw as intended
                         cursorX = e.X;
@@ -180,18 +199,16 @@ namespace Digital_Canvas
         {
             if (e.Button == MouseButtons.Left && fillSelected) //If the fill tool is selected and left click is pressed
             {
-                if(fillSelected)
-                {
                     Color fillColour = bmap.GetPixel(e.X, e.Y); //Gets the colour of clicked pixel, to compare with neighbours, and their neighbours, and so on
 
                     //We don't need to fill a selection that is already the same colour
-                    if (!fillColour.Equals(colour))
+                    if(!fillColour.Equals(colour))
                     {
                         Point p = new Point(e.X, e.Y); //Selected pixel coordinate 
                         Stack<Point> s = new Stack<Point>(); //Stack of pixel coordinates to check
 
                         s.Push(p); //Push clicked pixel coordinate to stacks
-
+                        
                         while (s.Count > 0) //While the stack contains elements
                         {
                             p = s.Pop(); //Pop the last
@@ -208,12 +225,6 @@ namespace Digital_Canvas
                             }
                         }
                     }
-                }
-                else if(eyedropSelected)
-                {
-                    Color newSelectedColour = bmap.GetPixel(e.X, e.Y);
-                    colour = newSelectedColour;
-                }
             }
         }
 
@@ -272,7 +283,9 @@ namespace Digital_Canvas
             pencil = brush;
 
             refresh();
-            btnBrush.BackColor = Color.LightGreen;
+            btnBrush.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
+
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -466,7 +479,8 @@ namespace Digital_Canvas
             pencil = line;
 
             refresh();
-            btnLine.BackColor = Color.LightGreen;
+            btnLine.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnEllipse_Click(object sender, EventArgs e)
@@ -474,7 +488,8 @@ namespace Digital_Canvas
             pencil = ellipse;
 
             refresh();
-            btnEllipse.BackColor = Color.LightGreen;
+            btnEllipse.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnRect_Click(object sender, EventArgs e)
@@ -482,17 +497,17 @@ namespace Digital_Canvas
             pencil = rect;
 
             refresh();
-            btnRect.BackColor = Color.LightGreen;
+            btnRect.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
-        bool eyedropSelected;
         private void btnEyedropper_Click(object sender, EventArgs e)
         {
 
 
             refresh();
-            btnEyedropper.BackColor = Color.LightGreen;
-            eyedropSelected = true;
+            btnEyedropper.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -503,10 +518,13 @@ namespace Digital_Canvas
 
         private void btnPencil_Click(object sender, EventArgs e)
         {
-            pencil = brush;
+            
+
+            pencil = pencil;
 
             refresh();
-            btnPencil.BackColor = Color.LightGreen;
+            btnPencil.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
         private void btnEraser_Click(object sender, EventArgs e)
@@ -514,7 +532,8 @@ namespace Digital_Canvas
             pencil = eraser;
 
             refresh();
-            btnEraser.BackColor = Color.LightGreen;
+            btnEraser.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
         }
 
 
@@ -522,11 +541,102 @@ namespace Digital_Canvas
         private void btnFill_Click(object sender, EventArgs e)
         {
             refresh();
-            btnFill.BackColor = Color.LightGreen;
+            btnFill.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
             fillSelected = true;
         }
 
-        
+        private void splitContainer1_Panel2_DragDrop(object sender, DragEventArgs e)
+        {
+            int widthDiffernce = 112;
+            int heightDiffernce = 62;
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if(data!=null)
+            {
+                var fileName = data as string[];
+                if(fileName.Length>0)
+                {
+                    bmap = (Bitmap)Bitmap.FromFile(fileName[0]);
+                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
+                    Size = new Size(bmap.Width + widthDiffernce, bmap.Height + heightDiffernce);//give exact canvas size as required
+
+                    // bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
+                    splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
+                }
+            }
+        }
+
+        private void splitContainer1_Panel2_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        //hover
+
+        private void btnPencil_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnPencil.BackColor;
+            Color colour;
+            if (btnPencil.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnPencil.BackColor);
+            }
+
+            btnPencil.BackColor = colour;
+        }
+
+        private void btnPencil_MouseLeave(object sender, EventArgs e)
+        {
+            btnPencil.BackColor = tempColour;
+        }
+
+        private void btnBrush_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnBrush.BackColor;
+            Color colour;
+            if (btnBrush.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnBrush.BackColor);
+            }
+
+            btnBrush.BackColor = colour;
+        }
+
+        private void btnBrush_MouseLeave(object sender, EventArgs e)
+        {
+            btnBrush.BackColor = tempColour;
+        }
+
+        private void btnEraser_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEraser.BackColor;
+            Color colour;
+            if (btnEraser.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEraser.BackColor);
+            }
+
+            btnEraser.BackColor = colour;
+        }
+
+        private void btnEraser_MouseLeave(object sender, EventArgs e)
+        {
+            btnEraser.BackColor = tempColour;
+        }
+
+        //file save
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -536,6 +646,7 @@ namespace Digital_Canvas
             }
         }
 
+        //file import
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var imageDialogue = new OpenFileDialog();
@@ -603,7 +714,7 @@ namespace Digital_Canvas
             {
                 btnEllipse_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.O)
+            else if (e.Alt == true && e.KeyCode == Keys.R)
             {
                 btnRect_Click(sender, e);
             }
@@ -625,6 +736,170 @@ namespace Digital_Canvas
             }
         }
 
+
+
+
+
+        //methods
+
+        Color SetHue(Color oldColor)
+        {
+            var temp = new HSV();
+            float hue = oldColor.GetHue();
+            temp.h = hue - 15;
+            temp.s = oldColor.GetSaturation();
+            temp.v = getBrightness(oldColor);
+            return ColorFromHSL(temp);
+        }
+
+        private void btnFill_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnFill.BackColor;
+            Color colour;
+            if (btnFill.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnFill.BackColor);
+            }
+
+            btnFill.BackColor = colour;
+        }
+
+        private void btnFill_MouseLeave(object sender, EventArgs e)
+        {
+            btnFill.BackColor = tempColour;
+        }
+
+        private void btnEyedropper_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEyedropper.BackColor;
+            Color colour;
+            if (btnEyedropper.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEyedropper.BackColor);
+            }
+
+            btnEyedropper.BackColor = colour;
+        }
+
+        private void btnEyedropper_MouseLeave(object sender, EventArgs e)
+        {
+            btnEyedropper.BackColor = tempColour;
+        }
+
+        private void btnLine_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnLine.BackColor;
+            Color colour;
+            if (btnLine.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnLine.BackColor);
+            }
+
+            btnLine.BackColor = colour;
+        }
+
+        private void btnLine_MouseLeave(object sender, EventArgs e)
+        {
+            btnLine.BackColor = tempColour;
+        }
+
+        private void btnEllipse_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnEllipse.BackColor;
+            Color colour;
+            if (btnEllipse.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnEllipse.BackColor);
+            }
+
+            btnEllipse.BackColor = colour;
+        }
+
+        private void btnEllipse_MouseLeave(object sender, EventArgs e)
+        {
+            btnEllipse.BackColor = tempColour;
+        }
+
+        private void btnRect_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnRect.BackColor;
+            Color colour;
+            if (btnRect.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnRect.BackColor);
+            }
+
+            btnRect.BackColor = colour;
+        }
+
+        private void btnRect_MouseLeave(object sender, EventArgs e)
+        {
+            btnRect.BackColor = tempColour;
+        }
+
+        private void btnRotateLeft_Click(object sender, EventArgs e)
+        {
+            bmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            
+        }
+
+        private void btnRotateRight_Click(object sender, EventArgs e)
+        {
+            bmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
+        }
+
+        float getBrightness(Color c)
+        { return (c.R * 0.299f + c.G * 0.587f + c.B * 0.114f) / 256f; }
+
+        static public Color ColorFromHSL(HSV hsl)
+        {
+            if (hsl.s == 0)
+            { int L = (int)hsl.v; return Color.FromArgb(255, L, L, L); }
+
+            double min, max, h;
+            h = hsl.h / 360d;
+
+            max = hsl.v < 0.5d ? hsl.v * (1 + hsl.s) : (hsl.v + hsl.s) - (hsl.v * hsl.s);
+            min = (hsl.v * 2d) - max;
+
+            Color c = Color.FromArgb(255, (int)(255 * RGBChannelFromHue(min, max, h + 1 / 3d)),
+                                          (int)(255 * RGBChannelFromHue(min, max, h)),
+                                          (int)(255 * RGBChannelFromHue(min, max, h - 1 / 3d)));
+            return c;
+        }
+
+        static double RGBChannelFromHue(double m1, double m2, double h)
+        {
+            h = (h + 1d) % 1d;
+            if (h < 0) h += 1;
+            if (h * 6 < 1) return m1 + (m2 - m1) * 6 * h;
+            else if (h * 2 < 1) return m2;
+            else if (h * 3 < 2) return m1 + (m2 - m1) * 6 * (2d / 3d - h);
+            else return m1;
+
+        }
+        public struct HSV { public float h; public float s; public float v; }
+
         void refresh()
         {
             btnBrush.BackColor = System.Drawing.Color.Transparent;
@@ -637,7 +912,6 @@ namespace Digital_Canvas
             btnRect.BackColor = System.Drawing.Color.Transparent;
 
             fillSelected = false;
-            eyedropSelected = false;
         }
     }
 }
