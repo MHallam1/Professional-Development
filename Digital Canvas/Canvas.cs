@@ -108,6 +108,7 @@ namespace Digital_Canvas
 
                 colour = diag.Color;
                 brush.Color = diag.Color;
+                pencil.Color = diag.Color;
             }
         }
 
