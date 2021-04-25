@@ -176,12 +176,6 @@ namespace Digital_Canvas
                         cursorX = e.X;
                         cursorY = e.Y;
                     }
-                    else if (originalPen == eraser)
-                    {
-                        g.DrawLine(eraser, new Point(cursorX, cursorY), e.Location);
-                        cursorX = e.X;
-                        cursorY = e.Y;
-                    }
                     else
                     {
                         
