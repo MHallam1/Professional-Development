@@ -859,6 +859,7 @@ namespace Digital_Canvas
 
         private void btnRotateLeft_Click(object sender, EventArgs e)
         {
+
             bmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
             
         }
