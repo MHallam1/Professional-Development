@@ -12,9 +12,6 @@ using System.Windows.Forms;
 
 namespace Digital_Canvas
 {
-
-
-
     public partial class Canvas : Form
     {
         //Reference to graphics object.
@@ -335,11 +332,6 @@ namespace Digital_Canvas
 
 
 
-        }
-
-        private static bool ColorMatch(Color a, Color b)
-        {
-            return (a.ToArgb() & 0xffffff) == (b.ToArgb() & 0xffffff);
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)//  this is the larger part of the split container 
