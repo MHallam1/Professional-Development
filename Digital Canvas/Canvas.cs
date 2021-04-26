@@ -57,7 +57,7 @@ namespace Digital_Canvas
             originalPen = new Pen(colour, size);
             pencil = new Pen(colour, size);
             brush = new Pen(colour, size);
-            eraser = new Pen(colour, size);
+            eraser = new Pen(colourBkg, size);
             rect = new Pen(colour, size);
             line = new Pen(colour, size);
             ellipse = new Pen(colour, size);
