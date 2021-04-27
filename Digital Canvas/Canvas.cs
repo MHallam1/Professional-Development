@@ -127,7 +127,7 @@ namespace Digital_Canvas
             lblcoordinates.Text = "X: " + e.X + " Y: " + e.Y;
             using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
             {
-                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected)
+                if (e.Button == MouseButtons.Left && moving && cursorX != -1 && cursorY != -1 && !fillSelected && !eyedropSelected)
                 {
                     if (originalPen == rect)
                     {
@@ -202,9 +202,11 @@ namespace Digital_Canvas
         //This is called when the Canvas is clicked
         private void splitContainer1_Panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && fillSelected) //If the fill tool is selected and left click is pressed
+            if (e.Button == MouseButtons.Left) //If the fill tool is selected and left click is pressed
             {
-                    Color fillColour = bmap.GetPixel(e.X, e.Y); //Gets the colour of clicked pixel, to compare with neighbours, and their neighbours, and so on
+                if(fillSelected)
+                {
+                     Color fillColour = bmap.GetPixel(e.X, e.Y); //Gets the colour of clicked pixel, to compare with neighbours, and their neighbours, and so on
 
                     //We don't need to fill a selection that is already the same colour
                     if(!fillColour.Equals(colour))
@@ -230,6 +232,17 @@ namespace Digital_Canvas
                             }
                         }
                     }
+                }
+                if(eyedropSelected)
+                {
+                        Color newColour = bmap.GetPixel(e.X, e.Y);
+                        if(newColour.A == 0) newColour = Color.White;
+                        PictureBox colours = colourSelect;
+                        colours.BackColor = newColour;
+                        colour = newColour;
+                        brush.Color = newColour;
+                        pencil.Color = newColour;
+                }    
             }
         }
 
@@ -500,14 +513,14 @@ namespace Digital_Canvas
             btnRect.BackColor = SetHue(Color.LightGreen);
             tempColour = Color.LightGreen;
         }
-
+        
+        bool eyedropSelected;
         private void btnEyedropper_Click(object sender, EventArgs e)
         {
-
-
             refresh();
             btnEyedropper.BackColor = SetHue(Color.LightGreen);
             tempColour = Color.LightGreen;
+            eyedropSelected = true;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -913,6 +926,7 @@ namespace Digital_Canvas
             btnRect.BackColor = System.Drawing.Color.Transparent;
 
             fillSelected = false;
+            eyedropSelected = false;
         }
     }
 }
