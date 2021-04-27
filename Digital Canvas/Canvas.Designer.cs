@@ -103,7 +103,8 @@ namespace Digital_Canvas
             this.splitContainer1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 37);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -140,16 +141,18 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseDown);
             this.splitContainer1.Panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseMove);
             this.splitContainer1.Panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseUp);
-            this.splitContainer1.Size = new System.Drawing.Size(787, 538);
+            this.splitContainer1.Size = new System.Drawing.Size(1180, 828);
             this.splitContainer1.SplitterDistance = 95;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnRotateRight
             // 
             this.btnRotateRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateRight.Location = new System.Drawing.Point(4, 260);
+            this.btnRotateRight.Location = new System.Drawing.Point(6, 400);
+            this.btnRotateRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRotateRight.Name = "btnRotateRight";
-            this.btnRotateRight.Size = new System.Drawing.Size(89, 24);
+            this.btnRotateRight.Size = new System.Drawing.Size(134, 37);
             this.btnRotateRight.TabIndex = 17;
             this.btnRotateRight.Text = "Rotate 90 right";
             this.btnRotateRight.UseVisualStyleBackColor = true;
@@ -157,9 +160,10 @@ namespace Digital_Canvas
             // 
             // btnRotateLeft
             // 
-            this.btnRotateLeft.Location = new System.Drawing.Point(4, 230);
+            this.btnRotateLeft.Location = new System.Drawing.Point(6, 354);
+            this.btnRotateLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRotateLeft.Name = "btnRotateLeft";
-            this.btnRotateLeft.Size = new System.Drawing.Size(89, 24);
+            this.btnRotateLeft.Size = new System.Drawing.Size(134, 37);
             this.btnRotateLeft.TabIndex = 16;
             this.btnRotateLeft.Text = "Rotate 90 left";
             this.btnRotateLeft.UseVisualStyleBackColor = true;
@@ -168,9 +172,10 @@ namespace Digital_Canvas
             // lblcoordinates
             // 
             this.lblcoordinates.AutoSize = true;
-            this.lblcoordinates.Location = new System.Drawing.Point(22, 376);
+            this.lblcoordinates.Location = new System.Drawing.Point(33, 578);
+            this.lblcoordinates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcoordinates.Name = "lblcoordinates";
-            this.lblcoordinates.Size = new System.Drawing.Size(63, 13);
+            this.lblcoordinates.Size = new System.Drawing.Size(95, 20);
             this.lblcoordinates.TabIndex = 15;
             this.lblcoordinates.Text = "Coordinates";
             // 
@@ -179,9 +184,10 @@ namespace Digital_Canvas
             this.btnRect.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnRect.Image = ((System.Drawing.Image)(resources.GetObject("btnRect.Image")));
             this.btnRect.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnRect.InitialImage")));
-            this.btnRect.Location = new System.Drawing.Point(46, 142);
+            this.btnRect.Location = new System.Drawing.Point(69, 218);
+            this.btnRect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRect.Name = "btnRect";
-            this.btnRect.Size = new System.Drawing.Size(47, 47);
+            this.btnRect.Size = new System.Drawing.Size(68, 70);
             this.btnRect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRect.TabIndex = 14;
             this.btnRect.TabStop = false;
@@ -194,9 +200,10 @@ namespace Digital_Canvas
             this.btnEllipse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnEllipse.Image = ((System.Drawing.Image)(resources.GetObject("btnEllipse.Image")));
             this.btnEllipse.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEllipse.InitialImage")));
-            this.btnEllipse.Location = new System.Drawing.Point(1, 142);
+            this.btnEllipse.Location = new System.Drawing.Point(2, 218);
+            this.btnEllipse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEllipse.Name = "btnEllipse";
-            this.btnEllipse.Size = new System.Drawing.Size(47, 47);
+            this.btnEllipse.Size = new System.Drawing.Size(68, 70);
             this.btnEllipse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEllipse.TabIndex = 13;
             this.btnEllipse.TabStop = false;
@@ -209,9 +216,10 @@ namespace Digital_Canvas
             this.btnLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnLine.Image = ((System.Drawing.Image)(resources.GetObject("btnLine.Image")));
             this.btnLine.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnLine.InitialImage")));
-            this.btnLine.Location = new System.Drawing.Point(46, 96);
+            this.btnLine.Location = new System.Drawing.Point(69, 148);
+            this.btnLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(47, 47);
+            this.btnLine.Size = new System.Drawing.Size(68, 70);
             this.btnLine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnLine.TabIndex = 12;
             this.btnLine.TabStop = false;
@@ -224,9 +232,10 @@ namespace Digital_Canvas
             this.btnEyedropper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnEyedropper.Image = ((System.Drawing.Image)(resources.GetObject("btnEyedropper.Image")));
             this.btnEyedropper.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEyedropper.InitialImage")));
-            this.btnEyedropper.Location = new System.Drawing.Point(1, 96);
+            this.btnEyedropper.Location = new System.Drawing.Point(2, 148);
+            this.btnEyedropper.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEyedropper.Name = "btnEyedropper";
-            this.btnEyedropper.Size = new System.Drawing.Size(47, 47);
+            this.btnEyedropper.Size = new System.Drawing.Size(68, 70);
             this.btnEyedropper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEyedropper.TabIndex = 11;
             this.btnEyedropper.TabStop = false;
@@ -238,9 +247,10 @@ namespace Digital_Canvas
             // 
             this.btnBrush.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnBrush.Image = ((System.Drawing.Image)(resources.GetObject("btnBrush.Image")));
-            this.btnBrush.Location = new System.Drawing.Point(46, 3);
+            this.btnBrush.Location = new System.Drawing.Point(69, 5);
+            this.btnBrush.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBrush.Name = "btnBrush";
-            this.btnBrush.Size = new System.Drawing.Size(47, 47);
+            this.btnBrush.Size = new System.Drawing.Size(68, 70);
             this.btnBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnBrush.TabIndex = 10;
             this.btnBrush.TabStop = false;
@@ -252,49 +262,55 @@ namespace Digital_Canvas
             // 
             this.lblCanvasSize.AutoSize = true;
             this.lblCanvasSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCanvasSize.Location = new System.Drawing.Point(8, 407);
+            this.lblCanvasSize.Location = new System.Drawing.Point(12, 626);
+            this.lblCanvasSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCanvasSize.Name = "lblCanvasSize";
-            this.lblCanvasSize.Size = new System.Drawing.Size(77, 15);
+            this.lblCanvasSize.Size = new System.Drawing.Size(115, 22);
             this.lblCanvasSize.TabIndex = 9;
             this.lblCanvasSize.Text = " Canvas Size";
             // 
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(7, 466);
+            this.lblWidth.Location = new System.Drawing.Point(10, 717);
+            this.lblWidth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(41, 13);
+            this.lblWidth.Size = new System.Drawing.Size(58, 20);
             this.lblWidth.TabIndex = 8;
             this.lblWidth.Text = "Width: ";
             // 
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(6, 439);
+            this.lblHeight.Location = new System.Drawing.Point(9, 675);
+            this.lblHeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(44, 13);
+            this.lblHeight.Size = new System.Drawing.Size(64, 20);
             this.lblHeight.TabIndex = 7;
             this.lblHeight.Text = "Height: ";
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(61, 436);
+            this.txtHeight.Location = new System.Drawing.Point(92, 671);
+            this.txtHeight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new System.Drawing.Size(30, 20);
+            this.txtHeight.Size = new System.Drawing.Size(43, 26);
             this.txtHeight.TabIndex = 6;
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(61, 462);
+            this.txtWidth.Location = new System.Drawing.Point(92, 711);
+            this.txtWidth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new System.Drawing.Size(30, 20);
+            this.txtWidth.Size = new System.Drawing.Size(43, 26);
             this.txtWidth.TabIndex = 5;
             // 
             // btnChangeSize
             // 
-            this.btnChangeSize.Location = new System.Drawing.Point(4, 485);
+            this.btnChangeSize.Location = new System.Drawing.Point(6, 746);
+            this.btnChangeSize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChangeSize.Name = "btnChangeSize";
-            this.btnChangeSize.Size = new System.Drawing.Size(89, 23);
+            this.btnChangeSize.Size = new System.Drawing.Size(134, 35);
             this.btnChangeSize.TabIndex = 4;
             this.btnChangeSize.Text = "Change Size";
             this.btnChangeSize.UseVisualStyleBackColor = true;
@@ -304,9 +320,10 @@ namespace Digital_Canvas
             // 
             this.btnFill.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnFill.Image = global::Digital_Canvas.Properties.Resources.fill;
-            this.btnFill.Location = new System.Drawing.Point(46, 49);
+            this.btnFill.Location = new System.Drawing.Point(69, 75);
+            this.btnFill.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFill.Name = "btnFill";
-            this.btnFill.Size = new System.Drawing.Size(47, 47);
+            this.btnFill.Size = new System.Drawing.Size(68, 70);
             this.btnFill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnFill.TabIndex = 3;
             this.btnFill.TabStop = false;
@@ -319,9 +336,10 @@ namespace Digital_Canvas
             this.btnEraser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnEraser.Image = global::Digital_Canvas.Properties.Resources.eraser;
             this.btnEraser.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnEraser.InitialImage")));
-            this.btnEraser.Location = new System.Drawing.Point(-1, 49);
+            this.btnEraser.Location = new System.Drawing.Point(-2, 75);
+            this.btnEraser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEraser.Name = "btnEraser";
-            this.btnEraser.Size = new System.Drawing.Size(47, 47);
+            this.btnEraser.Size = new System.Drawing.Size(68, 70);
             this.btnEraser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEraser.TabIndex = 4;
             this.btnEraser.TabStop = false;
@@ -334,9 +352,10 @@ namespace Digital_Canvas
             this.btnPencil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.btnPencil.Image = global::Digital_Canvas.Properties.Resources.pencil;
             this.btnPencil.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPencil.InitialImage")));
-            this.btnPencil.Location = new System.Drawing.Point(0, 3);
+            this.btnPencil.Location = new System.Drawing.Point(0, 5);
+            this.btnPencil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPencil.Name = "btnPencil";
-            this.btnPencil.Size = new System.Drawing.Size(47, 47);
+            this.btnPencil.Size = new System.Drawing.Size(68, 70);
             this.btnPencil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPencil.TabIndex = 3;
             this.btnPencil.TabStop = false;
@@ -346,9 +365,10 @@ namespace Digital_Canvas
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(500, -21);
+            this.pictureBox1.Location = new System.Drawing.Point(750, -32);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 18);
+            this.pictureBox1.Size = new System.Drawing.Size(30, 28);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -359,17 +379,19 @@ namespace Digital_Canvas
             this.colourPanel.Controls.Add(this.lblBgkColour);
             this.colourPanel.Controls.Add(this.lblColour);
             this.colourPanel.Controls.Add(this.colourSelect);
-            this.colourPanel.Location = new System.Drawing.Point(399, 0);
+            this.colourPanel.Location = new System.Drawing.Point(598, 0);
+            this.colourPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.colourPanel.Name = "colourPanel";
-            this.colourPanel.Size = new System.Drawing.Size(155, 24);
+            this.colourPanel.Size = new System.Drawing.Size(232, 37);
             this.colourPanel.TabIndex = 0;
             // 
             // bkgSelect
             // 
             this.bkgSelect.BackColor = System.Drawing.Color.White;
-            this.bkgSelect.Location = new System.Drawing.Point(130, 3);
+            this.bkgSelect.Location = new System.Drawing.Point(195, 5);
+            this.bkgSelect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bkgSelect.Name = "bkgSelect";
-            this.bkgSelect.Size = new System.Drawing.Size(20, 18);
+            this.bkgSelect.Size = new System.Drawing.Size(30, 28);
             this.bkgSelect.TabIndex = 7;
             this.bkgSelect.TabStop = false;
             this.bkgSelect.Click += new System.EventHandler(this.bkgSelect_Click);
@@ -377,9 +399,10 @@ namespace Digital_Canvas
             // lblBgkColour
             // 
             this.lblBgkColour.AutoSize = true;
-            this.lblBgkColour.Location = new System.Drawing.Point(64, 6);
+            this.lblBgkColour.Location = new System.Drawing.Point(96, 9);
+            this.lblBgkColour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBgkColour.Name = "lblBgkColour";
-            this.lblBgkColour.Size = new System.Drawing.Size(68, 13);
+            this.lblBgkColour.Size = new System.Drawing.Size(99, 20);
             this.lblBgkColour.TabIndex = 8;
             this.lblBgkColour.Text = "Background:";
             this.lblBgkColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -387,9 +410,10 @@ namespace Digital_Canvas
             // lblColour
             // 
             this.lblColour.AutoSize = true;
-            this.lblColour.Location = new System.Drawing.Point(5, 6);
+            this.lblColour.Location = new System.Drawing.Point(8, 9);
+            this.lblColour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblColour.Name = "lblColour";
-            this.lblColour.Size = new System.Drawing.Size(35, 13);
+            this.lblColour.Size = new System.Drawing.Size(50, 20);
             this.lblColour.TabIndex = 6;
             this.lblColour.Text = "Draw:";
             this.lblColour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -397,15 +421,17 @@ namespace Digital_Canvas
             // colourSelect
             // 
             this.colourSelect.BackColor = System.Drawing.Color.Black;
-            this.colourSelect.Location = new System.Drawing.Point(41, 3);
+            this.colourSelect.Location = new System.Drawing.Point(62, 5);
+            this.colourSelect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.colourSelect.Name = "colourSelect";
-            this.colourSelect.Size = new System.Drawing.Size(20, 18);
+            this.colourSelect.Size = new System.Drawing.Size(30, 28);
             this.colourSelect.TabIndex = 5;
             this.colourSelect.TabStop = false;
             this.colourSelect.Click += new System.EventHandler(this.colourSelect_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
@@ -414,7 +440,7 @@ namespace Digital_Canvas
             this.tabToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -427,27 +453,27 @@ namespace Digital_Canvas
             this.saveAsToolStripMenuItem,
             this.importToolStripMenuItem});
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.mainToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.saveToolStripMenuItem.Text = "New";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(224, 34);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -459,41 +485,41 @@ namespace Digital_Canvas
             this.bMPToolStripMenuItem,
             this.gIFToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // pNGToolStripMenuItem
             // 
             this.pNGToolStripMenuItem.Name = "pNGToolStripMenuItem";
-            this.pNGToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.pNGToolStripMenuItem.Size = new System.Drawing.Size(150, 34);
             this.pNGToolStripMenuItem.Text = "PNG";
             this.pNGToolStripMenuItem.Click += new System.EventHandler(this.pNGToolStripMenuItem_Click);
             // 
             // jPGToolStripMenuItem
             // 
             this.jPGToolStripMenuItem.Name = "jPGToolStripMenuItem";
-            this.jPGToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.jPGToolStripMenuItem.Size = new System.Drawing.Size(150, 34);
             this.jPGToolStripMenuItem.Text = "JPG";
             this.jPGToolStripMenuItem.Click += new System.EventHandler(this.jPGToolStripMenuItem_Click);
             // 
             // bMPToolStripMenuItem
             // 
             this.bMPToolStripMenuItem.Name = "bMPToolStripMenuItem";
-            this.bMPToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.bMPToolStripMenuItem.Size = new System.Drawing.Size(150, 34);
             this.bMPToolStripMenuItem.Text = "BMP";
             this.bMPToolStripMenuItem.Click += new System.EventHandler(this.bMPToolStripMenuItem_Click);
             // 
             // gIFToolStripMenuItem
             // 
             this.gIFToolStripMenuItem.Name = "gIFToolStripMenuItem";
-            this.gIFToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.gIFToolStripMenuItem.Size = new System.Drawing.Size(150, 34);
             this.gIFToolStripMenuItem.Text = "GIF";
             this.gIFToolStripMenuItem.Click += new System.EventHandler(this.gIFToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.importToolStripMenuItem.Text = "Import Image";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
@@ -506,37 +532,39 @@ namespace Digital_Canvas
             this.cutToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(58, 29);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.redoToolStripMenuItem.Text = "Redo";
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // customizeToolStripMenuItem
@@ -545,13 +573,13 @@ namespace Digital_Canvas
             this.keyboardShortcutsToolStripMenuItem,
             this.canvasToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(111, 29);
             this.customizeToolStripMenuItem.Text = "Customize";
             // 
             // keyboardShortcutsToolStripMenuItem
             // 
             this.keyboardShortcutsToolStripMenuItem.Name = "keyboardShortcutsToolStripMenuItem";
-            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.keyboardShortcutsToolStripMenuItem.Text = "Keyboard Shortcuts";
             // 
             // canvasToolStripMenuItem
@@ -559,13 +587,13 @@ namespace Digital_Canvas
             this.canvasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resizeCanvasToolStripMenuItem});
             this.canvasToolStripMenuItem.Name = "canvasToolStripMenuItem";
-            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.canvasToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.canvasToolStripMenuItem.Text = "Canvas";
             // 
             // resizeCanvasToolStripMenuItem
             // 
             this.resizeCanvasToolStripMenuItem.Name = "resizeCanvasToolStripMenuItem";
-            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.resizeCanvasToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.resizeCanvasToolStripMenuItem.Text = "Default Size";
             this.resizeCanvasToolStripMenuItem.Click += new System.EventHandler(this.resizeCanvasToolStripMenuItem_Click);
             // 
@@ -574,21 +602,22 @@ namespace Digital_Canvas
             this.tabToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem});
             this.tabToolStripMenuItem.Name = "tabToolStripMenuItem";
-            this.tabToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.tabToolStripMenuItem.Size = new System.Drawing.Size(55, 29);
             this.tabToolStripMenuItem.Text = "Tab";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(148, 34);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // txtSizebox
             // 
-            this.txtSizebox.Location = new System.Drawing.Point(356, 3);
+            this.txtSizebox.Location = new System.Drawing.Point(534, 5);
+            this.txtSizebox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSizebox.Name = "txtSizebox";
-            this.txtSizebox.Size = new System.Drawing.Size(28, 20);
+            this.txtSizebox.Size = new System.Drawing.Size(40, 26);
             this.txtSizebox.TabIndex = 2;
             this.txtSizebox.Text = "10";
             this.txtSizebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -598,18 +627,19 @@ namespace Digital_Canvas
             // 
             this.lblBrushSize.AutoSize = true;
             this.lblBrushSize.BackColor = System.Drawing.SystemColors.Control;
-            this.lblBrushSize.Location = new System.Drawing.Point(287, 6);
+            this.lblBrushSize.Location = new System.Drawing.Point(430, 9);
+            this.lblBrushSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrushSize.Name = "lblBrushSize";
-            this.lblBrushSize.Size = new System.Drawing.Size(63, 13);
+            this.lblBrushSize.Size = new System.Drawing.Size(94, 20);
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
             // 
             // Canvas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1176, 863);
             this.Controls.Add(this.lblBrushSize);
             this.Controls.Add(this.txtSizebox);
             this.Controls.Add(this.colourPanel);
@@ -617,8 +647,9 @@ namespace Digital_Canvas
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(1919, 1076);
-            this.MinimumSize = new System.Drawing.Size(599, 575);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(2868, 1625);
+            this.MinimumSize = new System.Drawing.Size(888, 854);
             this.Name = "Canvas";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Canvas_Load);

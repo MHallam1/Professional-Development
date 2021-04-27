@@ -41,9 +41,11 @@ namespace Digital_Canvas
         int defaultHeight = 600; //Starting Canvas Dimensions
         int defaultWidth = 800;
         
+        //Stacks for Edit History
+        Stack<Bitmap> bmapBack;
+        Stack<Bitmap> bmapForward;
 
-        //Flag for bucket tool
-        
+        Bitmap bitmapObject;
 
         public Canvas()
         {
@@ -78,6 +80,11 @@ namespace Digital_Canvas
                  BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, splitContainer1.Panel2,
                  new object[] { true });
 
+
+            
+            //Initialise Stacks for Edit History
+            bmapBack = new Stack<Bitmap>();
+            bmapForward = new Stack<Bitmap>();
         }
 
 
@@ -111,6 +118,9 @@ namespace Digital_Canvas
 
         private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e) // this event runs when the mouse button(left) is pressed/held down
         {
+            bitmapObject = (Bitmap)bmap.Clone();
+            bmapBack.Push(bitmapObject);
+            bmapForward.Clear();
             moving = true;
             cursorX = e.X; // gets mouse X location
             cursorY = e.Y; // gets mouse Y location
@@ -193,9 +203,9 @@ namespace Digital_Canvas
 
                 //splitContainer1.Panel2.do();
             }
+
+
             splitContainer1.Panel2.Invalidate();
-
-
         }
 
         
@@ -234,14 +244,17 @@ namespace Digital_Canvas
                     }
                 }
                 if(eyedropSelected)
-                {
-                        Color newColour = bmap.GetPixel(e.X, e.Y);
-                        if(newColour.A == 0) newColour = Color.White;
-                        PictureBox colours = colourSelect;
-                        colours.BackColor = newColour;
-                        colour = newColour;
-                        brush.Color = newColour;
-                        pencil.Color = newColour;
+                {       
+                    //Get the colour from the selected pixel
+                    Color newColour = bmap.GetPixel(e.X, e.Y);
+                    //The background colour on start is not white, so we must change it
+                    if(newColour.A == 0) newColour = Color.White;
+                    //Change the background colour of the colour select box to the new colour
+                    colourSelect.BackColor = newColour;
+                    //Change the colour of the brush and pencil to the new colour
+                    colour = newColour;
+                    brush.Color = newColour;
+                    pencil.Color = newColour;
                 }    
             }
         }
@@ -875,6 +888,40 @@ namespace Digital_Canvas
 
             bmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
             
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //If there is a history of canvas edits
+            if (bmapBack.Count > 0)
+            {
+                bmapForward.Push((Bitmap)bmap.Clone());
+                bitmapObject = bmapBack.Pop();
+
+                using (Graphics g = Graphics.FromImage(bmap))
+                {
+                    g.Clear(Color.Transparent);
+                    g.DrawImage(bitmapObject, new Point(0,0)); 
+                }
+                splitContainer1.Panel2.Invalidate();
+            }
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //If there is a history of canvas edits
+            if (bmapForward.Count > 0)
+            {
+                bmapBack.Push((Bitmap)bitmapObject.Clone());
+                bitmapObject = bmapForward.Pop();
+
+                using (Graphics g = Graphics.FromImage(bmap))
+                {
+                    g.Clear(Color.Transparent);
+                    g.DrawImage(bitmapObject, new Point(0, 0));
+                }
+                splitContainer1.Panel2.Invalidate();
+            }
         }
 
         private void btnRotateRight_Click(object sender, EventArgs e)
