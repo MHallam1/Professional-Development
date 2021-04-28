@@ -760,6 +760,14 @@ namespace Digital_Canvas
             {
                 importToolStripMenuItem_Click(sender, e);
             }
+            else if (e.Control == true && e.KeyCode == Keys.Z)
+            {
+                undoToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.Y)
+            {
+                redoToolStripMenuItem_Click(sender, e);
+            }
         }
 
 
