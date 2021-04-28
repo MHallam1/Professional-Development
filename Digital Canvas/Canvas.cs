@@ -482,7 +482,7 @@ namespace Digital_Canvas
             var openFile = new OpenFileDialog();
 
             openFile.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            openFile.Filter = "Image files (.png, .jpg, .jpeg, .jpe, gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.gif; *.bmp";
+           // openFile.Filter = "Image files (.png, .jpg, .jpeg, .jpe, gif, bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.gif; *.bmp";
 
             openFile.Title = "Open a file";
             //Show the file saving dialogue
