@@ -309,13 +309,15 @@ namespace Digital_Canvas
                 pencil.Width = size;
             }
         }
+
+        //This is called when the brush button is clicked
         private void btnBrush_Click(object sender, EventArgs e)
         {
-            originalPen = brush;
+            originalPen = brush; //Changes the pen to the pencil
 
-            refresh();
-            btnBrush.BackColor = SetHue(Color.LightGreen);
-            tempColour = Color.LightGreen;
+            refresh(); //clears all buttons highlights
+            btnBrush.BackColor = SetHue(Color.LightGreen); //sets eraser buttons highlight
+            tempColour = Color.LightGreen; //stores the colour
 
         }
 
@@ -542,24 +544,26 @@ namespace Digital_Canvas
             tab.ShowDialog();
         }
 
+        //This is called when the pencil button is clicked
         private void btnPencil_Click(object sender, EventArgs e)
         {
 
 
-            originalPen = pencil;
+            originalPen = pencil; //Changes the pen to the pencil
 
-            refresh();
-            btnPencil.BackColor = SetHue(Color.LightGreen);
-            tempColour = Color.LightGreen;
+            refresh(); //clears all buttons highlights
+            btnPencil.BackColor = SetHue(Color.LightGreen); //sets eraser buttons highlight
+            tempColour = Color.LightGreen; //stores the colour
         }
 
+        //This is called when the eraser button is clicked
         private void btnEraser_Click(object sender, EventArgs e)
         {
-            originalPen = eraser;
+            originalPen = eraser; //Changes the pen to the eraser
 
-            refresh();
-            btnEraser.BackColor = SetHue(Color.LightGreen);
-            tempColour = Color.LightGreen;
+            refresh(); //clears all buttons highlights
+            btnEraser.BackColor = SetHue(Color.LightGreen); //sets eraser buttons highlight
+            tempColour = Color.LightGreen; //stores the colour
         }
 
 

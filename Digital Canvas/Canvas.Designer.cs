@@ -181,7 +181,7 @@ namespace Digital_Canvas
             this.btnRotateLeft.TabIndex = 16;
             this.btnRotateLeft.Text = "Rotate 90 left";
             this.btnRotateLeft.UseVisualStyleBackColor = true;
-            this.btnRotateLeft.Click += new System.EventHandler(this.btnRotateLeft_Click);
+            this.btnRotateLeft.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // lblcoordinates
             // 
