@@ -662,16 +662,6 @@ namespace Digital_Canvas
             btnEraser.BackColor = tempColour;
         }
 
-        //file save
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
-            {
-                g.Clear(colourBkg);
-            }
-        }
-
         //file import
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -991,6 +981,20 @@ namespace Digital_Canvas
         private void btnText_MouseLeave(object sender, EventArgs e)
         {
             btnText.BackColor = tempColour;
+        }
+
+        private void keyboardShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //This is called when the new strip menu is clicked
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Graphics g = Graphics.FromImage(bmap)) // draws on the bitmap
+            {
+                g.Clear(colourBkg); //overwrites the canvas with the colourBkg colour
+            }
         }
 
         private void btnRotateRight_Click(object sender, EventArgs e)
