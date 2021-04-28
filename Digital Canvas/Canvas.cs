@@ -768,6 +768,18 @@ namespace Digital_Canvas
             {
                 redoToolStripMenuItem_Click(sender, e);
             }
+            else if (e.Control == true && e.KeyCode == Keys.C)
+            {
+                copyToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.X)
+            {
+                cutToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.Control == true && e.KeyCode == Keys.V)
+            {
+                pasteToolStripMenuItem_Click(sender, e);
+            }
         }
 
 
@@ -930,6 +942,21 @@ namespace Digital_Canvas
                 }
                 splitContainer1.Panel2.Invalidate();
             }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnRotateRight_Click(object sender, EventArgs e)
