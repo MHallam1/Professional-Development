@@ -693,7 +693,6 @@ namespace Digital_Canvas
             PictureBox colours = (PictureBox)sender;
             colours.Invalidate();
 
-
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 bkgSelect.BackColor = diag.Color;
