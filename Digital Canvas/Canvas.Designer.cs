@@ -31,6 +31,7 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnText = new System.Windows.Forms.PictureBox();
             this.btnRotateRight = new System.Windows.Forms.Button();
             this.btnRotateLeft = new System.Windows.Forms.Button();
             this.lblcoordinates = new System.Windows.Forms.Label();
@@ -79,11 +80,11 @@ namespace Digital_Canvas
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSizebox = new System.Windows.Forms.TextBox();
             this.lblBrushSize = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).BeginInit();
@@ -97,7 +98,6 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.bkgSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -111,7 +111,7 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.btnText);
             this.splitContainer1.Panel1.Controls.Add(this.btnRotateRight);
             this.splitContainer1.Panel1.Controls.Add(this.btnRotateLeft);
             this.splitContainer1.Panel1.Controls.Add(this.lblcoordinates);
@@ -146,6 +146,21 @@ namespace Digital_Canvas
             this.splitContainer1.Size = new System.Drawing.Size(787, 538);
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnText
+            // 
+            this.btnText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnText.Image = ((System.Drawing.Image)(resources.GetObject("btnText.Image")));
+            this.btnText.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnText.InitialImage")));
+            this.btnText.Location = new System.Drawing.Point(1, 184);
+            this.btnText.Name = "btnText";
+            this.btnText.Size = new System.Drawing.Size(47, 47);
+            this.btnText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnText.TabIndex = 18;
+            this.btnText.TabStop = false;
+            this.btnText.Click += new System.EventHandler(this.btnText_Click);
+            this.btnText.MouseEnter += new System.EventHandler(this.btnText_MouseEnter);
+            this.btnText.MouseLeave += new System.EventHandler(this.btnText_MouseLeave);
             // 
             // btnRotateRight
             // 
@@ -516,35 +531,35 @@ namespace Digital_Canvas
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -613,18 +628,6 @@ namespace Digital_Canvas
             this.lblBrushSize.TabIndex = 3;
             this.lblBrushSize.Text = "Brush Size: ";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(1, 184);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
-            // 
             // Canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,6 +652,7 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).EndInit();
@@ -664,7 +668,6 @@ namespace Digital_Canvas
             ((System.ComponentModel.ISupportInitialize)(this.colourSelect)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -720,6 +723,6 @@ namespace Digital_Canvas
         private System.Windows.Forms.Label lblcoordinates;
         private System.Windows.Forms.Button btnRotateRight;
         private System.Windows.Forms.Button btnRotateLeft;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnText;
     }
 }

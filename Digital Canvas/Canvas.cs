@@ -712,37 +712,41 @@ namespace Digital_Canvas
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Alt == true && e.KeyCode == Keys.P)
+            if (e.Shift == true && e.KeyCode == Keys.P)
             {
                 btnPencil_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.B)
+            else if (e.Shift == true && e.KeyCode == Keys.B)
             {
                 btnBrush_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.E)
+            else if (e.Shift == true && e.KeyCode == Keys.E)
             {
                 btnEraser_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.F)
+            else if (e.Shift == true && e.KeyCode == Keys.F)
             {
                 btnFill_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.I)
+            else if (e.Shift == true && e.KeyCode == Keys.I)
             {
                 btnEyedropper_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.L)
+            else if (e.Shift == true && e.KeyCode == Keys.L)
             {
                 btnLine_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.E)
+            else if (e.Shift == true && e.KeyCode == Keys.O)
             {
                 btnEllipse_Click(sender, e);
             }
-            else if (e.Alt == true && e.KeyCode == Keys.R)
+            else if (e.Shift == true && e.KeyCode == Keys.R)
             {
                 btnRect_Click(sender, e);
+            }
+            else if (e.Shift == true && e.KeyCode == Keys.T)
+            {
+                btnText_Click(sender, e);
             }
             else if (e.Control == true && e.KeyCode == Keys.N)
             {
@@ -959,6 +963,36 @@ namespace Digital_Canvas
 
         }
 
+        private void btnText_Click(object sender, EventArgs e)
+        {
+
+
+            refresh();
+            btnText.BackColor = SetHue(Color.LightGreen);
+            tempColour = Color.LightGreen;
+        }
+
+        private void btnText_MouseEnter(object sender, EventArgs e)
+        {
+            tempColour = btnText.BackColor;
+            Color colour;
+            if (btnText.BackColor == System.Drawing.Color.Transparent)
+            {
+                colour = Color.LightGray;
+            }
+            else
+            {
+                colour = SetHue(btnText.BackColor);
+            }
+
+            btnText.BackColor = colour;
+        }
+
+        private void btnText_MouseLeave(object sender, EventArgs e)
+        {
+            btnText.BackColor = tempColour;
+        }
+
         private void btnRotateRight_Click(object sender, EventArgs e)
         {
             bmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -1006,6 +1040,7 @@ namespace Digital_Canvas
             btnEllipse.BackColor = System.Drawing.Color.Transparent;
             btnLine.BackColor = System.Drawing.Color.Transparent;
             btnRect.BackColor = System.Drawing.Color.Transparent;
+            btnText.BackColor = System.Drawing.Color.Transparent;
 
             fillSelected = false;
             eyedropSelected = false;
