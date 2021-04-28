@@ -692,8 +692,6 @@ namespace Digital_Canvas
             //colour selector method
             PictureBox colours = (PictureBox)sender;
             colours.Invalidate();
-            // pencil.Color = colours.BackColor; // sets the selected colour
-            // colour = colours.BackColor;
 
 
             if (diag.ShowDialog() == DialogResult.OK)
