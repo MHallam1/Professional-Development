@@ -957,30 +957,9 @@ namespace Digital_Canvas
 
 
             refresh();
-            btnText.BackColor = SetHue(Color.LightGreen);
             tempColour = Color.LightGreen;
         }
 
-        private void btnText_MouseEnter(object sender, EventArgs e)
-        {
-            tempColour = btnText.BackColor;
-            Color colour;
-            if (btnText.BackColor == System.Drawing.Color.Transparent)
-            {
-                colour = Color.LightGray;
-            }
-            else
-            {
-                colour = SetHue(btnText.BackColor);
-            }
-
-            btnText.BackColor = colour;
-        }
-
-        private void btnText_MouseLeave(object sender, EventArgs e)
-        {
-            btnText.BackColor = tempColour;
-        }
 
         private void keyboardShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1043,7 +1022,6 @@ namespace Digital_Canvas
             btnEllipse.BackColor = System.Drawing.Color.Transparent;
             btnLine.BackColor = System.Drawing.Color.Transparent;
             btnRect.BackColor = System.Drawing.Color.Transparent;
-            btnText.BackColor = System.Drawing.Color.Transparent;
 
             fillSelected = false;
             eyedropSelected = false;

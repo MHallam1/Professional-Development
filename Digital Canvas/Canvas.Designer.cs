@@ -31,7 +31,6 @@ namespace Digital_Canvas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Canvas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnText = new System.Windows.Forms.PictureBox();
             this.btnRotateRight = new System.Windows.Forms.Button();
             this.btnRotateLeft = new System.Windows.Forms.Button();
             this.lblcoordinates = new System.Windows.Forms.Label();
@@ -84,7 +83,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).BeginInit();
@@ -111,7 +109,6 @@ namespace Digital_Canvas
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.btnText);
             this.splitContainer1.Panel1.Controls.Add(this.btnRotateRight);
             this.splitContainer1.Panel1.Controls.Add(this.btnRotateLeft);
             this.splitContainer1.Panel1.Controls.Add(this.lblcoordinates);
@@ -146,21 +143,6 @@ namespace Digital_Canvas
             this.splitContainer1.Size = new System.Drawing.Size(787, 538);
             this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // btnText
-            // 
-            this.btnText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.btnText.Image = ((System.Drawing.Image)(resources.GetObject("btnText.Image")));
-            this.btnText.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnText.InitialImage")));
-            this.btnText.Location = new System.Drawing.Point(1, 184);
-            this.btnText.Name = "btnText";
-            this.btnText.Size = new System.Drawing.Size(47, 47);
-            this.btnText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnText.TabIndex = 18;
-            this.btnText.TabStop = false;
-            this.btnText.Click += new System.EventHandler(this.btnText_Click);
-            this.btnText.MouseEnter += new System.EventHandler(this.btnText_MouseEnter);
-            this.btnText.MouseLeave += new System.EventHandler(this.btnText_MouseLeave);
             // 
             // btnRotateRight
             // 
@@ -654,7 +636,6 @@ namespace Digital_Canvas
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLine)).EndInit();
@@ -725,6 +706,5 @@ namespace Digital_Canvas
         private System.Windows.Forms.Label lblcoordinates;
         private System.Windows.Forms.Button btnRotateRight;
         private System.Windows.Forms.Button btnRotateLeft;
-        private System.Windows.Forms.PictureBox btnText;
     }
 }
