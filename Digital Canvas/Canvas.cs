@@ -300,10 +300,7 @@ namespace Digital_Canvas
         private void sizebox_TextChanged(object sender, EventArgs e)// select the size of brush
         {
             int value = 0;
-            if (int.TryParse(txtSizebox.Text, out value) == false)
-            {
-            }
-            else
+            if (int.TryParse(txtSizebox.Text, out value) == true)
             {
                 size = Int32.Parse(txtSizebox.Text);
                 pencil.Width = size;
