@@ -419,7 +419,8 @@ namespace Digital_Canvas
         private void pNGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
-            saveDialogue.Filter = ".png|PNG|";
+            saveDialogue.Filter = "PNG | *.png";
+            saveDialogue.DefaultExt = "png";
             saveDialogue.Title = "Save your file as a png";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
@@ -434,7 +435,8 @@ namespace Digital_Canvas
         private void jPGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
-            saveDialogue.Filter = ".jpg;.jpeg;.jpe|JPG|";
+            saveDialogue.Filter = "JPG | *.jpg";
+            saveDialogue.DefaultExt = "jpg";
             saveDialogue.Title = "Save your file as a jpg";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
@@ -449,7 +451,8 @@ namespace Digital_Canvas
         private void bMPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var saveDialogue = new SaveFileDialog();
-            saveDialogue.Filter = ".bmp|BMP|";
+            saveDialogue.Filter = "BMP | *.bmp";
+            saveDialogue.DefaultExt = "bmp";
             saveDialogue.Title = "Save your file as a bitmap";
             //Show the file saving dialogue
             DialogResult result = saveDialogue.ShowDialog();
@@ -463,7 +466,8 @@ namespace Digital_Canvas
 
         private void gIFToolStripMenuItem_Click(object sender, EventArgs e)
         {var saveDialogue = new SaveFileDialog();
-            saveDialogue.Filter = ".gif|GIF|";
+            saveDialogue.Filter = "GIF | *.gif";
+            saveDialogue.DefaultExt = "gif";
             saveDialogue.Title = "Save your file as a gif";
             DialogResult result = saveDialogue.ShowDialog();
             if (result == DialogResult.OK)
