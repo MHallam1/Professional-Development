@@ -950,14 +950,6 @@ namespace Digital_Canvas
 
         }
 
-        private void btnText_Click(object sender, EventArgs e)
-        {
-
-
-            refresh();
-            tempColour = Color.LightGreen;
-        }
-
 
         private void keyboardShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
