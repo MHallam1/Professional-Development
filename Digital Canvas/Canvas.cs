@@ -590,7 +590,6 @@ namespace Digital_Canvas
                     splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top);
                     Size = new Size(bmap.Width + widthDiffernce, bmap.Height + heightDiffernce);//give exact canvas size as required
 
-                    // bmap = new Bitmap(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
                     splitContainer1.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
                 }
             }
