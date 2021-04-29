@@ -735,10 +735,6 @@ namespace Digital_Canvas
             {
                 btnRect_Click(sender, e);
             }
-            else if (e.Shift == true && e.KeyCode == Keys.T)
-            {
-                btnText_Click(sender, e);
-            }
             else if (e.Control == true && e.KeyCode == Keys.N)
             {
                 saveToolStripMenuItem_Click(sender, e);
