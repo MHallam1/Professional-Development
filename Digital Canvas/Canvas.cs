@@ -427,7 +427,7 @@ namespace Digital_Canvas
             if (result == DialogResult.OK)
             {
                 string folderName = saveDialogue.FileName;
-                bmap.Save(".png");
+                bmap.Save(folderName);
                 fileTypeDefaultSave = "png";
             }
         }
@@ -443,7 +443,7 @@ namespace Digital_Canvas
             if (result == DialogResult.OK)
             {
                 string folderName = saveDialogue.FileName;
-                bmap.Save(folderName + ".jpg");
+                bmap.Save(folderName);
                 fileTypeDefaultSave = "jpg";
             }
         }
@@ -459,7 +459,7 @@ namespace Digital_Canvas
             if (result == DialogResult.OK)
             {
                 string folderName = saveDialogue.FileName;
-                bmap.Save(".bmp");
+                bmap.Save(folderName);
                 fileTypeDefaultSave = "bmp";
             }
         }
@@ -473,7 +473,7 @@ namespace Digital_Canvas
             if (result == DialogResult.OK)
             {
                 string folderName = saveDialogue.FileName;
-                bmap.Save(".gif");
+                bmap.Save(folderName);
                 fileTypeDefaultSave = "gif";
             }
          }
