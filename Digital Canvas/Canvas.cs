@@ -547,8 +547,6 @@ namespace Digital_Canvas
         //This is called when the pencil button is clicked
         private void btnPencil_Click(object sender, EventArgs e)
         {
-
-
             originalPen = pencil; //Changes the pen to the pencil
 
             refresh(); //clears all buttons highlights
