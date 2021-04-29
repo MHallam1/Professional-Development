@@ -307,6 +307,8 @@ namespace Digital_Canvas
             {
                 size = Int32.Parse(txtSizebox.Text);
                 pencil.Width = size;
+                eraser.Width = size;
+                brush.Width = size;
             }
         }
 
